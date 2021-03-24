@@ -1,8 +1,8 @@
 import React from "react";
-import "../../App.css";
+import "../../../App.css";
+import { Link } from "react-router-dom";
 
-import Input from "../../Components/Input";
-import Button from "../../Components/Button"
+import Input from "../../../Components/Input";
 
 function Signup() {
     return (
@@ -13,7 +13,7 @@ function Signup() {
                 <Input type="password" placeholder="Password" label="Password" labelclass="form-label" class="form-control shadow-sm" properties="mt-3" />
                 <Input type="password" placeholder="Confirm Password" label="Confirm Password" labelclass="form-label" class="form-control shadow-sm" properties="mt-3" />
             </form>
-            <Button class="btn btn-color-secondary w-100 p" value="Create account" />
+            <Link to="/user-createprofile" className="btn btn-color-secondary w-100 p">Create account</Link>
         </div>
     );
 }

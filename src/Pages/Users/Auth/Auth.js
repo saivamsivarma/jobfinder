@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import "../../App.css";
+import "../../../App.css";
 
-import People from "../../Assets/People.jpg"
-import LoginF from "../../Assets/LoginF.jpg"
-import LoginM from "../../Assets/LoginM.jpg"
-import Navbar from "../../Components/Navbar";
-import Login from "../../Pages/Users/Login";
-import Signup from "../../Pages/Users/Signup";
+import People from "../../../Assets/People.jpg"
+import LoginF from "../../../Assets/LoginF.jpg"
+import LoginM from "../../../Assets/LoginM.jpg"
+import logo from "../../../Assets/logo.svg"
+import Login from "./Login";
+import Signup from "./Signup";
 
 function Auth() {
     const [component, setComponent] = useState("Login")
@@ -26,8 +26,8 @@ function Auth() {
     }
 
     const front = {
-        hidden: { y: 0, },
-        visible: { y: 110, opacity: 1 },
+        hidden: { y: 0,x:0 },
+        visible: { y: 110, opacity: 1,x:50 },
         transition: { duration: 5 }
     }
     const middle = {
@@ -67,9 +67,8 @@ function Auth() {
                 </div>
 
                 <div className="col-12 col-lg-6">
-                    <Navbar page="userauth-login" />
                     <div className="w-100 px-lg-5 my-5 my-md-4 text-center">
-                        <div className="fs-2 my-2">Welcome to JobFinder</div>
+                        <div className="fs-2 my-2 d-felx alogn-items-center">Welcome to <img src={logo} alt="" height="40" /></div>
                         <div className="fs-6 text-secondary">Discover,Apply,Refer your network, and get Rewarded</div>
                     </div>
                     {component === "Login" ?

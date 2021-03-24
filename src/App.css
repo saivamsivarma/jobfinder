@@ -1,6 +1,10 @@
-.btn-color-primary,.btn-color-primary:hover{
+.btn-color-primary,.btn-color-primary:hover,.btn-color-outline-primary:hover{
     color:#ffffff;
     background-color: #FFB200;
+}
+.btn-color-outline-primary{
+    color:#FFB200;
+    border: 2px solid #FFB200;
 }
 
 .primary-border{
@@ -18,13 +22,27 @@
 .primary-bg{
     background-color: #0F233B;
 }
+.color-bg{
+    background-color: #dae9fc;
+    height: 100vh;
+}
+.secondary-bg{
+    background-color: #FFB200;
+}
+.upload-section{
+    background-color: #0F233B;
+}
 
 .h-90{
     height: 90vh;
 }
 
 .input-custom{
-    width:19rem !important
+    width:15rem !important
+}
+
+.input-custom2{
+    width:20rem !important
 }
 
 .btn-color-secondary,.btn-color-secondary:hover{
@@ -41,12 +59,12 @@
     background-color: #0F233B;
     color:#ffffff
 }
-.form-control:focus{
+/*.form-control:focus{
     border-color: #ffffff;
     outline: 0;
     -webkit-box-shadow: inset 0 0px 0px rgba(255, 255, 255, 0.075),0 0 8px rgba(255, 255, 255, 0.6);
     box-shadow: inset 0 0px 0px rgba(255, 255, 255, 0.075),0 0 8px rgba(255, 255, 255, 0.6);
-}
+}*/
 
 .holder{
     width: 90%;
@@ -60,6 +78,33 @@
     height: 13rem !important;
 }
 
+.nav__link{
+    transition: .3s;
+  }
+
+.nav__name{
+    color: #0F233B !important;
+}
+
+.nav__name::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    color: #FFB200;
+    background: #FFB200 ;
+    transition: width .3s;
+}
+
+.nav__name:hover::after {
+    width: 100%;
+    color:#FFFFFF;
+}
+
+.text-xs{
+    font-size: .9rem;
+    text-align: justify;
+}
 
 @media only screen and (max-width: 1025px)
 {
@@ -83,5 +128,8 @@
     
     .input-custom{
         width:13rem !important;
+    }
+    .input-custom2{
+        width: 16rem !important;
     }
 }

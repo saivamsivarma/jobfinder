@@ -1,9 +1,10 @@
 import React from "react";
-import "../../App.css";
+import "../../../App.css";
+import { Link } from "react-router-dom";
 
-import Input from "../../Components/Input";
-import Button from "../../Components/Button"
-import Checkbox from "../../Components/Checkbox";
+import Input from "../../../Components/Input";
+/*import Button from "../../Components/Button"*/
+import Checkbox from "../../../Components/Checkbox";
 
 function Login() {
     return (
@@ -16,10 +17,7 @@ function Login() {
                     <div className="fw-bold fs-6 text-secondary">Forgot Password ?</div>
                 </div>
             </form>
-                <Button class="btn btn-color-secondary w-100" value="LogIn" />
-            <div className="d-flex justify-content-between align-items-center my-4">
-                <div className="line_break"></div><div className="fs-6">Or login with</div><div className="line_break"></div>
-            </div>
+                <Link to="/dashboard" className="btn btn-color-secondary w-100" value="LogIn" >LogIn</Link>
         </div>
     );
 }
