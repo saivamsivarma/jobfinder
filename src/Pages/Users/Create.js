@@ -172,7 +172,7 @@ function Createprofile() {
                                     </div>
                                     <input type="text" className="form-control shadow-sm" placeholder="Skills" value={formData.skills} onChange={(e) => setFormData({ ...formData, skills: e.target.value.split(',') })}/>
                                 </div>
-                                <button className="btn btn-outline-secondary rounded shadow-sm w-100 my-2">Post a Job</button>
+                                <button className="btn btn-outline-secondary rounded shadow-sm w-100 my-2">Create Profile</button>
                             </div>
                         </div>
                     </form>
