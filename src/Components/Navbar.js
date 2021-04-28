@@ -11,7 +11,7 @@ function Navbar(props) {
     const page = props.page
 
     return (
-        <nav className="navbar navbar-expand-lg bg-white">
+        <nav className="navbar navbar-expand-lg bg-transparent">
             <div className="container-fluid">
                 <div className="d-flex justify-content-between w-100 align-items-center">
                     <div className="navbar-brand">
@@ -30,7 +30,7 @@ function Navbar(props) {
                             <div className="fw-bold">FAQ</div>
                             <div className="fw-bold">Contact</div>
                             <Link to="/auth" className="btn btn-outline-secondary px-4 fw-bold">Log in</Link>
-                            <Link to="/companiesauth" class="btn btn-color-secondary px-4 fw-bold">Are you an employer?</Link>
+                            <Link to="/companiesauth" className="btn btn-color-secondary px-4 fw-bold">Are you an employer?</Link>
                         </div>
                     </div>
                     : <div></div>}

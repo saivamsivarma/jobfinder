@@ -43,7 +43,7 @@ function Auth() {
     return (
         <div className="container-fluid">
             <div className="row">
-                <div className="col-6 d-none d-lg-block">
+                <div className="col-7 d-none d-lg-block  color-bg height-max">
                     <div className="row mt-lg-2 mt-xl-5 ">
                         <div className="col-12 col-xl-6 ">
                             <motion.div className="front-img" initial="hidden" animate="visible" variants={back}>
@@ -66,7 +66,7 @@ function Auth() {
                     </div>
                 </div>
 
-                <div className="col-12 col-lg-6">
+                <div className="col-12 col-lg-5 bg-white rounded">
                     <div className="w-100 px-lg-5 my-5 my-md-4 text-center">
                         <div className="fs-2 my-2 d-felx alogn-items-center">Welcome to <img src={logo} alt="" height="40" /></div>
                         <div className="fs-6 text-secondary">Discover,Apply,Refer your network, and get Rewarded</div>

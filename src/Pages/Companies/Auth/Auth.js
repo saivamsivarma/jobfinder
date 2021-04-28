@@ -11,23 +11,20 @@ function Auth() {
 
     function handleClick(e) {
         e.preventDefault();
-        if(component==="Login"){
+        if (component === "Login") {
             setComponent("Signup");
             console.log(component);
         }
-        else{
+        else {
             setComponent("Login");
             console.log(component)
         }
     }
     return (
         <div className="container-fluid">
-            <div className="row justify-content-center align-items-center color-bg">
-                <div className="col-12 col-lg-5 card p-2 shadow">
-                    <div className="w-100 px-lg-5 my-5 my-md-4 text-center">
-                        <div className="fs-2 my-2 d-felx alogn-items-center">Welcome to <img src={logo} alt="" height="40" /></div>
-                        <div className="fs-6 text-secondary">Discover,Apply,Refer your network, and get Rewarded</div>
-                    </div>
+            <div className="row align-items-center">
+                <div className="col-12 col-lg-5 p-2 bg-white height-max rounded shadow">
+                    {component === "Login" ? <div className="px-lg-5 my-3 fs-2 fw-bold secondary-text">Log in to your account</div>:<div className="px-lg-5 my-3 fs-2 fw-bold secondary-text">Create your account</div>}
                     {component === "Login" ?
                         <div className="px-xl-2">
                             <Login />
@@ -38,12 +35,16 @@ function Auth() {
                         : component === "Signup" ?
                             <div className="px-xl-2">
                                 <Signup />
-                            <div className="text-center mt-3">
-                                <div className="btn">Old User?<span className="secondary-text fw-bold" onClick={handleClick}> Login To Account</span></div>
-                            </div>
+                                <div className="text-center mt-3">
+                                    <div className="btn">Old User?<span className="secondary-text fw-bold" onClick={handleClick}> Login To Account</span></div>
+                                </div>
                             </div>
                             : <></>
                     }
+                </div>
+                <div className="col-md-7 text-center">
+                    <div className="fs-2">Welcome to <img src={logo} alt="" height="40" /></div>
+                    <div className="fs-6 text-secondary">Discover,Apply,Refer your network, and get Rewarded</div>
                 </div>
             </div>
         </div>

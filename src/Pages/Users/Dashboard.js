@@ -4,30 +4,24 @@ import "../../App.css";
 import Sidenav from "../../Components/Sidenav";
 
 import Job from "../../Assets/job.svg";
-import User from "../../Assets/defaultuser.svg";
 import Semi from "../../Assets/semi.svg"
 
 function Dashboard() {
+    const user  = JSON.parse(localStorage.getItem('profile'))
+
     return (
-        <div className="container-fluid">
+        <div className="container-fluid color-bg">
             <div className="row align-items-start">
-                <div className="col-12 col-lg-3 col-xl-2 rounded">
-                    <Sidenav />
+                <div className="col-12 col-lg-3 col-xl-2 rounded bg-white">
+                    <Sidenav page="user" />
                 </div>
-                <div className="col-12 col-lg-9 col-xl-8 color-bg">
+                <div className="col-12 col-lg-9 col-xl-8 height-max">
                     <div className="row mt-2 gy-3">
                         <div className="col-12">
-                            <div className="d-flex justify-content-between align-items-center">
-                                <div className="fs-4"> Welcome! Vamsi</div>
-                                <div className="d-flex align-items-center">
-                                <div className="user-img float-right"><img src={User} alt="" className="img-fluid shadow rounded-pill" width="40" /></div>
-                                    <div className="dropdown">
-                                        <button className="btn btn-white dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"></button>
-                                        <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                            <li><div className="dropdown-item">Logout</div></li>
-                                        </ul>
-                                    </div>
-                                </div>
+                            <div className="d-flex justify-content-between align-itmes-center">
+                                <div className="fs-4"> Welcome! {user?.result.name}</div>
+
+                                {user.result.imageUrl ?(<img alt={user?.result.name} src={user?.result.imageUrl} className="img-fluid shadow rounded-pill" width="40" />):<div className="bg-warning text-white rounded px-3 py-2 rounded-pill shadow-sm">{user?.result.name.charAt(0)}</div>}
                             </div>
                         </div>
                         <div className="col-12">

@@ -1,6 +1,5 @@
 import React from "react";
 import { motion } from "framer-motion";
-import Input from "../../Components/Input";
 import Button from "../../Components/Button";
 import Navbar from "../../Components/Navbar";
 import "../../App.css";
@@ -21,18 +20,17 @@ function Landing() {
         transition: { duration: 5 }
     }
     return (
-        <div>
+        <div className="color-bg height-max">
             <Navbar page="landing"/>
-            <div className="container-fluid">
+            <div className="container-fluid ">
                 <div className="row align-items-md-center">
                     <div className="col-12 col-md-6 col-xl-5 px-3 order-last order-md-first">
                         <div className="my-5 my-md-0 px-sm-0 px-xl-4">
-                            <div className="primary-text fw-bold fs-1">Refer your network.</div>
-                            <div className="primary-text fw-bold fs-1">They get hired.</div>
-                            <div className="secondary-text fw-bold fs-1">You get rewarded.</div>
+                            <div className="primary-text fw-bold fs-1">The Company of your<span className="secondary-text"> dream </span>is looking for you.</div>
+                            <div className="text-secondary my-3"> The Job Finder gives you an opportunity to anonymous search and simply apply to jobs you are interested in.</div>
                             <form className="form-group mt-2">
-                                <div className="d-flex align-items-center justify-content-between rounded-pill shadow holder p-1 primary-border">
-                                    <Input type="text" placeholder="Your Email" class="form-control rounded-pill border-white input-custom" labelclass="d-none" labelcheck="d-none" />
+                                <div className="d-flex align-items-center justify-content-between rounded-pill shadow holder p-1 primary-border bg-white">
+                                    <input type="text" placeholder="Your Email" className="form-control rounded-pill border-white input-custom"/>
                                     <Button class="btn btn-color-primary rounded-pill fw-bold" value="Sign up" />
                                 </div>
                             </form>

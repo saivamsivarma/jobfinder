@@ -1,10 +1,10 @@
 import React from "react";
 
-function Input(props) {
+const Input= ({properties,label,name,type,placeholder,handleChange}) =>{
     return (
-                <div className={props.properties}>
-                    <label className={props.labelclass}>{props.label}</label>
-                    <input type={props.type} className={props.class} placeholder={props.placeholder} required={props.required} readOnly={props.readOnly} />
+                <div className={properties}>
+                    <label className="form-label">{label}</label>
+                    <input name={name} type={type} className="form-control shadow-sm" placeholder={placeholder} required onChange={handleChange}/>
                 </div>
     );
 }

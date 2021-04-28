@@ -1,23 +1,37 @@
-import React from "react";
+import React,{useState} from "react";
 import "../../../App.css";
-import { Link } from "react-router-dom";
+import { useDispatch } from 'react-redux';
 
+import { useHistory } from "react-router-dom";
+import {signincompany} from "../../../actions/auth"
 import Input from "../../../Components/Input";
-/*import Button from "../../Components/Button"*/
 import Checkbox from "../../../Components/Checkbox";
 
+const initialState = {email:'',password:''}
+
 function Login() {
+    const history = useHistory();
+    const dispatch = useDispatch();
+    const [formData, setFormData] = useState(initialState);
+    const handleSubmit = (e) =>{
+        e.preventDefault();
+        console.log(formData);
+        dispatch(signincompany(formData,history))
+    }
+    const handleChange = (e) =>{
+        setFormData({...formData, [e.target.name]:e.target.value});
+    }
     return (
         <div className="mx-auto w-100 px-lg-5">
-            <form className="form-group my-4">
-                <Input type="email" placeholder="Email Id" label="Email Id" labelclass="form-label" class="form-control shadow-sm" properties="mt-3" />
-                <Input type="password" placeholder="Password" label="Password" labelclass="form-label" class="form-control shadow-sm" properties="mt-3" />
+            <form className="form-group my-4" onSubmit={handleSubmit}>
+                <Input name="email" type="email" placeholder="Email Id" label="Email Id"  properties="mt-3" handleChange={handleChange}/>
+                <Input name="password" type="password" placeholder="Password" label="Password" properties="mt-3" handleChange={handleChange}/>
                 <div className="d-flex justify-content-between align-items-center mt-2">
-                    <Checkbox type="checkbox" label="Remember me" labelclass="form-check-label" class="form-check-input" />
+                    <Checkbox label="Remember me" />
                     <div className="fw-bold fs-6 text-secondary">Forgot Password ?</div>
                 </div>
+                <button className="btn btn-color-secondary w-100 mt-3 mb-4" value="LogIn" >LogIn</button>
             </form>
-                <Link to="/dashboard" className="btn btn-color-secondary w-100" value="LogIn" >LogIn</Link>
         </div>
     );
 }
