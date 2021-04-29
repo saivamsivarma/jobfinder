@@ -21,7 +21,7 @@ function Dashboard() {
                             <div className="d-flex justify-content-between align-itmes-center">
                                 <div className="fs-4"> Welcome! {user?.result.name}</div>
 
-                                {user.result.imageUrl ?(<img alt={user?.result.name} src={user?.result.imageUrl} className="img-fluid shadow rounded-pill" width="40" />):<div className="bg-warning text-white rounded px-3 py-2 rounded-pill shadow-sm">{user?.result.name.charAt(0)}</div>}
+                                {user.result.imageUrl ?(<img alt={user?.result.name} src={`https://jobfinder-project.herokuapp.com/`+user?.result.imageUrl} className="img-fluid shadow rounded-pill" width="40" />):<div className="bg-warning text-white rounded px-3 py-2 rounded-pill shadow-sm">{user?.result.name.charAt(0)}</div>}
                             </div>
                         </div>
                         <div className="col-12">

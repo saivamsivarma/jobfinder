@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API  = axios.create({baseURL:'https://jobfinder-project.herokuapp.com/'})
-
+//const API  = axios.create({baseURL:'http://localhost:5000'})
 API.interceptors.request.use((req)=>{
     if(localStorage.getItem('profile')){
         req.headers.Authorization = `Bearer ${JSON.parse(localStorage.getItem('profile')).token}`
@@ -19,4 +19,4 @@ export const getusers = () => API.get('/user/profile')
 export const postjob = (jobData)=> API.post('/job/post_job',jobData)
 export const companyjobs = (id) =>API.get(`/job/get_company_jobs/${id}`)
 export const getprofile = (id) => API.get(`/company/profile/${id}`)
-export const userprofile = (formData) => API.post('/user/profile',formData)
+export const userprofile = (profile) => API.post('/user/profile',profile)

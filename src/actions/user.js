@@ -11,9 +11,10 @@ export const getusers = () => async (dispatch) => {
     }
   };
 
-  export const userprofile = (formData,history) => async(dispatch)=>{
+  export const userprofile = (profile,history) => async(dispatch)=>{
     try{
-      const {data} = await api.userprofile(formData);
+      const {data} = await api.userprofile(profile);
+      console.log(data)
       dispatch({type:CREATE_PROFILE_USER,payload:data})
       history.push('/dashboard')
     }catch(err){

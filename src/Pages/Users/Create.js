@@ -45,9 +45,6 @@ function Createprofile() {
             setPreviewSrc(fileReader.result);
         };
         fileReader.readAsDataURL(uploadedFile);
-        console.log(uploadedFile.path)
-        setFormData({...formData,image:uploadedFile})
-        console.log(formData)
         setIsPreviewAvailable(uploadedFile.name.match(/\.(jpeg|jpg|png)$/));
     };
 
@@ -76,9 +73,34 @@ function Createprofile() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        try{
+            const { age, contact, occupation,clgcompName,role,seniority,experience,shareprofile,skills} =formData
+            const _id = user?.result._id;
+            const name = user?.result.name;
+            const email = user?.result.email
+            const profiles = new FormData();
+            profiles.append('_id',_id)
+            profiles.append('name',name)
+            profiles.append('email',email)
+            profiles.append('age',age)
+            profiles.append('contact', contact);
+            profiles.append('occupation',occupation)
+            profiles.append('clgcompName',clgcompName)
+            profiles.append('role', role);
+            profiles.append('seniority', seniority)
+            profiles.append('experience', experience)
+            profiles.append('shareprofile', shareprofile)
+            profiles.append('skills', skills)
+            profiles.append('geo_location', [viewport.latitude,viewport.longitude])
+            profiles.append('image', file)
+            console.log(profiles)
+            dispatch(userprofile(profiles,history));
+        } catch(err){
+            console.log(err)
+        }
         const geo = [viewport.latitude, viewport.longitude]
         setFormData({ ...formData, geo_location: geo })
-        setFormData({...formData,image:file})
+        setFormData({...formData,image:file.path})
         dispatch(userprofile(formData,history));
         console.log(formData)
     };

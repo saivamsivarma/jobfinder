@@ -49,7 +49,7 @@ function Signup() {
                 <Input name="confirmPassword" type="password" placeholder="Confirm Password" label="Confirm Password"  properties="mt-3" handleChange={handleChange}/>
                 <button className="btn btn-color-secondary w-100 mt-3">Create account</button>
             </form>
-            <div className="text-center">Or Signup with your Socail account</div>
+            <div className="text-center">Or Signup with your Social account</div>
             <GoogleLogin clientId="578031199772-5pjpsc9n6t1aknaci8k10sokgmdg58v5.apps.googleusercontent.com" render={(renderProps) => (
                 <button className="btn text-center btn-color-outline-primary w-100" onClick={renderProps.onClick} disabled={renderProps.disabled}>
                     Google LogIn
