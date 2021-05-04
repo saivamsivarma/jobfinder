@@ -1,4 +1,4 @@
-import { CREATE_PROFILE_USER, GET_USERS} from "../constants/actionTypes";
+import { CREATE_PROFILE_USER, DATA, GET_USERS} from "../constants/actionTypes";
 
 const UserReducer = (users = [], action)=>{
     switch (action.type){
@@ -6,6 +6,8 @@ const UserReducer = (users = [], action)=>{
             return action.payload;
         case CREATE_PROFILE_USER:
             return [...users, action.payload]
+        case DATA:
+            return users.filter((user) => user._id !== action.payload);
         default:
             return users;
     }

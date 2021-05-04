@@ -99,12 +99,46 @@
     color: #0F233B !important;
 }
 
-.active {
-    border-left: 4px solid #FFB200;
+.marker-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .marker-btn img {
+    width: 20px;
+    height: 20px;
+  }
+
+  .link {
+    display: inline-block;
+    color: #04283E;
+    text-decoration: none;
+}
+
+
+.link::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    color: #FFB200;
+    background: #FFB200;
+    transition: width .3s;
+    color: #04283E !important;
+}
+
+.link:hover::after {
+    width: 100%;
+    color:#04283E !important;
 }
 
 .text-xs{
     font-size: .9rem;
+    text-align: justify;
+}
+
+.text-justify{
     text-align: justify;
 }
 

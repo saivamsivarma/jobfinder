@@ -1,8 +1,6 @@
 import React, { useEffect } from "react";
 import "../../App.css";
 import { useDispatch,useSelector } from 'react-redux';
-
-import Sidenav from "../../Components/Sidenav";
 import Jobtable from "../../Components/Jobtable";
 
 import { companyjob } from '../../actions/jobs';
@@ -24,12 +22,8 @@ function Dashboard() {
 
     const jobs = useSelector((state) => state.jobs);
     return (
-        <div className="container-fluid">
             <div className="row">
-                <div className="col-12 col-lg-3 col-xl-2 rounded bg-white">
-                    <Sidenav />
-                </div>
-                <div className="col-12 col-lg-9 col-xl-8 my-2">
+                <div className="col-12 col-lg-10 my-2">
                     <div className="row mt-2 gy-3">
                         <div className="col-12">
                             <div className="fs-4"> Welcome! {user?.result.name}</div>
@@ -73,7 +67,7 @@ function Dashboard() {
                                 </div> :
                                     <>
                                         {jobs.map((job) => (
-                                            <Jobtable job={job} />
+                                            <Jobtable job={job} key={job._id}/>
                                         ))}</>}
                             </div>
                         </div>
@@ -86,7 +80,6 @@ function Dashboard() {
                     </div>
                 </div>
             </div>
-        </div>
     );
 }
 

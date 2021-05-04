@@ -1,29 +1,79 @@
 import React from "react";
 import "../../App.css";
-
-import Sidenav from "../../Components/Sidenav";
-
+import { motion } from "framer-motion";
+import Badge from "../../Components/Badge";
 function Profile() {
+    const data = JSON.parse(localStorage.getItem('userData'))
+    const pageVariants = {
+        initial: {
+            opacity: 0,
+            scale: 0.8
+        },
+        in: {
+            opacity: 1,
+            scale: 1
+        },
+        out: {
+            opacity: 0,
+
+            scale: 1.2
+        }
+    };
+
+    const pageTransition = {
+        type: "fadein",
+        duration: 0.6
+    };
     return (
-        <div className="container-fluid">
-            <div className="row">
-                <div className="col-12 col-lg-3 col-xl-2 bg-white">
-                    <Sidenav page="user" />
-                </div>
-                <div className="col-12 col-lg-9 col-xl-10 color-bg height-max">
-                    <div className="row">
-                        <div className="scroll-div-profile overflow-auto" id="custom_scroll_bar">
-                            <div className="col-12 col-md-7 mt-3 border-0">
-                                <div className="d-flex justify-content-between align-items-center">
-                                    <div className="fs-2">Your Profile</div>
-                                    <div className="text-secondary">Edit Profile</div>
-                                </div>
-                                <div className="card shadow p-3">
-                                    <div className="d-flex justify-content-between align-items-center">
-                                        <div>
-                                            <div className="fs-5">Vamsi Varma</div>
-                                            <div className="fs-6 text-secondary">Student</div>
+        <motion.div className="row" initial="initial" animate="in" exit="out" variants={pageVariants} transition={pageTransition}>
+            <div className="col-12 col-lg-9 col-xl-8 color-bg height-max">
+                <div className="row">
+                    <div className="scroll-div-profile" >
+                        <div className="col-12 mt-3 border-0">
+                            <div className="d-flex justify-content-between align-items-center">
+                                <div className="fs-2">Your Profile</div>
+                                <div className="text-secondary">Edit Profile</div>
+                            </div>
+                            <div className="card shadow p-3">
+                                <div className="row gy-3">
+                                    <div className="col-9">
+                                        <div className="fs-5">{data.name}</div>
+                                        <div className="fs-6 secondary-text">{data.occupation}</div>
+                                    </div>
+                                    <div className="col-3 text-center">
+                                        <img src={"https://jobfinder-project.herokuapp.com/" + data.image} alt="user" className="img-fluid shadow rounded-pill" width="60" />
+                                    </div>
+                                    <div className="col-12 col-md-9">
+                                        <div className="fs-6 text-secondary">Email</div>
+                                        <div className="fs-5 secondary-text">{data.email}</div>
+                                    </div>
+                                    <div className="col-6 col-md-3 text-md-center">
+                                        <div className="fs-6 text-secondary ">Age</div>
+                                        <div className="fs-5 secondary-text">{data.age}</div>
+                                    </div>
+                                    <div className="col-6 col-md-4">
+                                        <div className="fs-6 text-secondary">Contact</div>
+                                        <div className="fs-5 secondary-text">{data.contact}</div>
+                                    </div>
+                                    <div className="col-6 col-md-4">
+                                        {data.occupation === "Student" ?
+                                            <div className="fs-6 text-secondary">Collage name</div> :
+                                            <div className="fs-6 text-secondary">Company name</div>
+                                        }
+
+                                        <div className="fs-5 secondary-text">{data.clgcompName}</div>
+                                    </div>
+                                    <div className="col-6 col-md-4 text-md-center">
+                                        <div className="fs-6 text-secondary">Education</div>
+                                        <div className="fs-5 secondary-text">{data.education}</div>
+                                    </div>
+                                    <div className="col-12">
+                                        <div className="fs-6 text-secondary">Skills</div>
+                                        {data.skills.map((skill) =>
+                                        <div key>
+                                            <Badge value={skill} color="primary"/>
                                         </div>
+                                        )}
                                     </div>
                                 </div>
                             </div>
@@ -31,7 +81,7 @@ function Profile() {
                     </div>
                 </div>
             </div>
-        </div>
+        </motion.div>
     );
 }
 

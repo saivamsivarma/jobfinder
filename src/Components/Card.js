@@ -1,38 +1,37 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-function Card(props) {
+function Card({job}) {
+    console.log(job)
     return (
         <div className="card p-4 shadow">
-            <div className="row gy-2 gy-md-3 ">
+            <div className="row gy-2 gy-md-2">
                 <div className="col-12">
-                    <div className="d-flex align-item-center justify-content-around justify-content-md-between">
+                    <div className="d-flex align-item-center justify-content-between">
                         <div className="details">
-                            <div className="fw-bold secondary-text">Visual Content Development</div>
-                            <div className="fw-bold primary-text">Internshala</div>
+                            <div className="fw-bold secondary-text">{job.postName}</div>
+                            <div className="fw-bold primary-text">{job.company_id.companyname}</div>
                         </div>
-                        <img src="" alt="intershala" height="40" />
+                        <img src={"https://jobfinder-project.herokuapp.com/"+job.company_id.logo} alt={job.company_id.companyname} height="40" />
                     </div>
                 </div>
-                <div className="col-6 col-md-3">
-                    <div className="fw-bold secondary-text">START DATE</div>
-                    <div className="primary-text">22-11-2020</div>
+                <div className="col-6 col-md-4">
+                    <div className="fw-bold secondary-text">Job Mode</div>
+                    <div className="primary-text">{job.jobType}</div>
                 </div>
-                <div className="col-6 col-md-3">
-                    <div className="fw-bold secondary-text">DURATION</div>
-                    <div className="primary-text">5 Weeks</div>
+                <div className="col-6 col-md-4">
+                    <div className="fw-bold secondary-text">Location</div>
+                    <div className="primary-text">{job.location}</div>
                 </div>
-                <div className="col-6 col-md-3">
-                    <div className="fw-bold secondary-text">STIPEND</div>
-                    <div className="primary-text">5000/month</div>
-                </div>
-                <div className="col-6 col-md-3">
-                    <div className="fw-bold secondary-text">APPLY BY</div>
-                    <div className=" primary-text">10 Oct' 20</div>
+                <div className="col-6 col-md-4">
+                    <div className="fw-bold secondary-text">Work</div>
+                    {!job.remote? <div className="primary-text">On site</div>:
+                    <div className="primary-text">Remote</div>}
                 </div>
                 <div className="col-12">
                     <div className="d-flex justify-content-between">
-                        <div className="num-result px-2 rounded-pill">1</div>
-                        <div className="btn px-3">view details</div>
+                        <div className="num-result px-2 rounded-pill"></div>
+                        <Link to={"/user-page/job/"+job._id} className="btn px-3">View Details</Link>
                     </div>
                 </div>
             </div>

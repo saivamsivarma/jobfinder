@@ -45,9 +45,6 @@ function Sidenav(props) {
                             <NavLink to="/profile" activeClassName='active' className="nav__name fs-5 text-decoration-none">Profile</NavLink>
                         </div>
                         <div className="nav__link my-3 py-2 px-3 rounded" role="button">
-                            <NavLink to="/settings" activeClassName='active' className="nav__name fs-5 text-decoration-none">Settings</NavLink>
-                        </div>
-                        <div className="nav__link my-3 py-2 px-3 rounded" role="button">
                             <NavLink to="/auth" activeClassName='active' className="nav__name fs-5 text-decoration-none" onClick={logout}>Logout</NavLink>
                         </div>
                     </div>
@@ -62,9 +59,6 @@ function Sidenav(props) {
                         </div>
                         <div className="nav__link my-3 py-2 px-3 rounded" role="button">
                             <NavLink to="/profile" activeClassName='active' className="nav__name fs-5 text-decoration-none">Profile</NavLink>
-                        </div>
-                        <div className="nav__link my-3 py-2 px-3 rounded" role="button">
-                            <NavLink to="/settings" activeClassName='active' className="nav__name fs-5 text-decoration-none">Settings</NavLink>
                         </div>
                         <div className="nav__link my-3 py-2 px-3 rounded" role="button">
                             <NavLink to="/auth" activeClassName='active' className="nav__name fs-5 text-decoration-none" onClick={logout}>Logout</NavLink>

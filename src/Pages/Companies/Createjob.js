@@ -58,13 +58,12 @@ function Createjob() {
     };
 
     return (
-        <div className="container-fluid">
             <div className="row my-5">
                 <div className="col-6">
                     <div className="fs-4 fw-bold mt-2">Job Posting Advert</div>
                 </div>
                 <div className="col-6">
-                    <Link to="/jobs" className="btn float-end text-decoration-underline">Back</Link>
+                    <Link to="/company/jobs" className="btn float-end text-decoration-underline">Back</Link>
                 </div>
                 <div className="col-12 col-md-8">
                     <form className="form-group px-2 mt-5" onSubmit={handleSubmit}>
@@ -79,8 +78,8 @@ function Createjob() {
                                     <textarea name="description" className="form-control shadow-sm" rows="10" placeholder="Description" value={jobData.description} onChange={(e) => setJobData({ ...jobData, description: e.target.value })}></textarea>
                                 </div>
                                 <div className="my-2">
-                                    <label className="form-label">Suggested Keyword</label>
-                                    <input name="keyword" type="text" className="form-control shadow-sm" placeholder="Suggested Keyword" value={jobData.keyword} onChange={(e) => setJobData({ ...jobData, keyword: e.target.value.split(',') })} />
+                                    <label className="form-label">Skill(s) required</label>
+                                    <input name="keyword" type="text" className="form-control shadow-sm" placeholder="Skill(s)" value={jobData.keyword} onChange={(e) => setJobData({ ...jobData, keyword: e.target.value.split(',') })} />
                                 </div>
                             </div>
                             <div className="col-12 col-lg-6">
@@ -142,12 +141,11 @@ function Createjob() {
                                     />
                                 </MapGL>
                             </div>
-                            <button className="btn shadow-sm w-50 my-2 mx-auto btn-color-primary">Confirm Address</button>
+                            <button className="btn shadow-sm w-50 my-2 mx-auto btn-color-primary">Confirm</button>
                         </div>
                     </form>
                 </div>
             </div>
-        </div>
     );
 }
 

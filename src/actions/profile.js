@@ -5,10 +5,9 @@ export const companyprofile = (profiles, history) => async (dispatch) => {
     try {
         const data = await api.companyprofile(profiles)
         dispatch({ type: CREATE_PROFILE, payload: data });
-        history.push('/dashboard-company')
-        console.log(data)
-    } catch (err) {
-        console.log(err)
+        history.push('/company')
+    } catch ({response}) {
+        console.log(response.data.message)
     }
 }
 

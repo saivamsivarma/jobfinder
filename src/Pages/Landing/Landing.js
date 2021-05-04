@@ -8,19 +8,24 @@ import FrontImg from "../../Assets/front-img.jpg";
 import BackImg from "../../Assets/back-img.jpg";
 
 function Landing() {
-    const back_img = {
-        hidden: { opacity: 0.5,y:20 },
-        visible: { opacity: 1, y: 0 },
-        transition: { duration: 5 }
-    }
+    const pageVariants = {
+        initial: {
+            opacity: 0,
+        },
+        in: {
+            opacity: 1,
+        },
+        out: {
+            opacity: 0
+        }
+    };
 
-    const front_img = {
-        hidden: { opacity: 0.5,y:150 },
-        visible: { opacity: 1,y:100 },
-        transition: { duration: 5 }
-    }
+    const pageTransition = {
+        type: "fadein",
+        duration: 0.5,
+    };
     return (
-        <div className="color-bg height-max">
+        <motion.div className="height-max" initial="initial" animate="in" exit="out" variants={pageVariants} transition={pageTransition}>
             <Navbar page="landing"/>
             <div className="container-fluid ">
                 <div className="row align-items-md-center">
@@ -39,20 +44,20 @@ function Landing() {
                     <div className="col-12 col-md-6 col-xl-7 order-first order-md-last h-90">
                         <div className="row">
                             <div className="col-6 col-md-6 text-center">
-                                <motion.div className="front-img" initial="hidden" animate="visible" variants={front_img}>
+                                <div className="front-img mt-5">
                                     <img src={FrontImg} alt="" className="shadow rounded image" />
-                                </motion.div>
+                                </div>
                             </div>
                             <div className="col-6 col-md-6 text-center">
-                                <motion.div className="front-img" initial="hidden" animate="visible" variants={back_img}>
+                                <div className="front-img">
                                     <img src={BackImg} alt="" className="shadow rounded image" />
-                                </motion.div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </motion.div>
     );
 }
 

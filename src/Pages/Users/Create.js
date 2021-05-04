@@ -1,5 +1,8 @@
 import React, { useState, useRef, useCallback } from "react";
 import "../../App.css";
+
+import { ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Dropzone from 'react-dropzone';
 
 import "mapbox-gl/dist/mapbox-gl.css";
@@ -18,8 +21,9 @@ import { userprofile } from "../../actions/user";
 const MAPBOX_TOKEN = "pk.eyJ1IjoidmFtc2l2YXJtYSIsImEiOiJja255cGl5aTgwMDh1MndsOGNlMW5tcjB1In0.meQKsOns2H20hKPnUQoYrQ";
 
 function Createprofile() {
-    const user  = JSON.parse(localStorage.getItem('profile'))
-    const [formData, setFormData] = useState({ _id:user.result._id,name: user.result.name, email:user.result.email,age:'', contact:'', occupation:'',clgcompName:'',role:'',seniority:'',experience:'',shareprofile:'',skills:'',geo_location:'',image:''});
+    const user = JSON.parse(localStorage.getItem('profile'))
+
+    const [formData, setFormData] = useState({ _id: user.result._id, name: user.result.name, email: user.result.email, age: '', contact: '', occupation: '', clgcompName: '', education: '', role: '', seniority: '', experience: '', shareprofile: '', skills: '', geo_location: '', image: '' });
     const history = useHistory();
     const dispatch = useDispatch();
 
@@ -65,50 +69,41 @@ function Createprofile() {
         [handleViewportChange]
     );
 
-    const confirmAddress = async (e) => {
-        e.preventDefault();
-        const geo = [viewport.latitude, viewport.longitude]
-        setFormData({ ...formData, geo_location: geo })
-    }
-
     const handleSubmit = async (e) => {
         e.preventDefault();
-        try{
-            const { age, contact, occupation,clgcompName,role,seniority,experience,shareprofile,skills} =formData
+        try {
+            const { age, contact, occupation, clgcompName, education, role, seniority, experience, shareprofile, skills } = formData
             const _id = user?.result._id;
             const name = user?.result.name;
             const email = user?.result.email
             const profiles = new FormData();
-            profiles.append('_id',_id)
-            profiles.append('name',name)
-            profiles.append('email',email)
-            profiles.append('age',age)
+            profiles.append('_id', _id)
+            profiles.append('name', name)
+            profiles.append('email', email)
+            profiles.append('age', age)
             profiles.append('contact', contact);
-            profiles.append('occupation',occupation)
-            profiles.append('clgcompName',clgcompName)
+            profiles.append('occupation', occupation)
+            profiles.append('clgcompName', clgcompName)
+            profiles.append('education', education)
             profiles.append('role', role);
             profiles.append('seniority', seniority)
             profiles.append('experience', experience)
             profiles.append('shareprofile', shareprofile)
             profiles.append('skills', skills)
-            profiles.append('geo_location', [viewport.latitude,viewport.longitude])
+            profiles.append('geo_location', [viewport.latitude, viewport.longitude])
             profiles.append('image', file)
             console.log(profiles)
             dispatch(userprofile(profiles,history));
-        } catch(err){
+        } catch (err) {
             console.log(err)
         }
-        const geo = [viewport.latitude, viewport.longitude]
-        setFormData({ ...formData, geo_location: geo })
-        setFormData({...formData,image:file.path})
-        dispatch(userprofile(formData,history));
-        console.log(formData)
     };
 
     return (
         <div className="container-fluid">
+            <ToastContainer position="top-center"autoClose={5000} hideProgressBar newestOnTop closeOnClickrtl pauseOnFocusLoss draggable pauseOnHover/>
             <div className="row">
-            <div className="col-12">
+                <div className="col-12">
                     <div className="fs-4 fw-bold mt-2">Jobfinder Profile</div>
                 </div>
                 <div className="col-12 col-md-8">
@@ -118,7 +113,7 @@ function Createprofile() {
                                 <div className="text-center">
                                     <div className="text-center">
                                         <div className="mb-2">
-                                            {previewSrc ? (<img className="preview-image rounded-circle shadow" src={previewSrc} alt="Preview" height="150" width="150" />) : (<img src={User} alt="" className="rounded-circle shadow bg-white" height="150" width="150" />)}
+                                            {previewSrc ? (<img className="preview-image rounded-circle shadow" src={previewSrc} alt="Preview" height="100" width="100" />) : (<img src={User} alt="" className="rounded-circle shadow bg-white" height="100" width="100" />)}
                                         </div>
                                         <div>
                                             <Dropzone
@@ -135,72 +130,90 @@ function Createprofile() {
                                 </div>
                                 <div className="my-2">
                                     <label className="form-label">Full Name</label>
-                                    <input type="text" className="form-control shadow-sm" placeholder="Full Name" value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} readOnly/>
+                                    <input type="text" className="form-control shadow-sm" placeholder="Full Name" value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} readOnly />
                                 </div>
                                 <div className="my-2">
                                     <label className="form-label">Email</label>
-                                    <input type="text" className="form-control shadow-sm" placeholder="Email" value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} readOnly/>
+                                    <input type="text" className="form-control shadow-sm" placeholder="Email" value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} readOnly />
                                 </div>
                                 <div className="my-2">
                                     <label className="form-label">Age</label>
-                                    <input type="number" className="form-control shadow-sm" placeholder="Age" value={formData.age} onChange={(e) => setFormData({ ...formData, age: e.target.value })}/>
+                                    <input type="number" className="form-control shadow-sm" placeholder="Age" value={formData.age} onChange={(e) => setFormData({ ...formData, age: e.target.value })} />
                                 </div>
                                 <div className="my-2">
                                     <label className="form-label">Conatct</label>
-                                    <input type="number" className="form-control shadow-sm" placeholder="Contact" value={formData.contact} onChange={(e) => setFormData({ ...formData, contact: e.target.value })}/>
-                                </div>
-                                <div className="my-3">
-                                    <label className="form-label">Occupation</label>
-                                    <input list="Occupation" className="form-control shadow-sm" placeholder="Occupation" value={formData.occupation} onChange={(e) => setFormData({ ...formData, occupation: e.target.value })}/>
-                                    <datalist id="Occupation">
-                                        <option>Student</option>
-                                        <option>Full time employee</option>
-                                        <option>Part time employee</option>
-                                        <option>Freelancer</option>
-                                    </datalist>
-                                </div>
-                            </div>
-                            <div className="col-12 col-lg-6">
-                                <div className="my-3">
-                                    <label className="form-label">Collage/ Company Name</label>
-                                    <input className="form-control shadow-sm" placeholder="Collage/ Company Name" value={formData.clgcompName} onChange={(e) => setFormData({ ...formData, clgcompName: e.target.value })}/>
-                                </div>
-                                <div className="my-3">
-                                    <label className="form-label">Role (optional)</label>
-                                    <input type="text" className="form-control shadow-sm" placeholder="Role" value={formData.role} onChange={(e) => setFormData({ ...formData, role: e.target.value })}/>
-                                </div>
-                                <div className="my-3">
-                                    <label className="form-label">Seniority (optional)</label>
-                                    <input type="text" className="form-control shadow-sm" placeholder="Role" value={formData.seniority} onChange={(e) => setFormData({ ...formData, seniority: e.target.value })}/>
-                                </div>
-                                <div className="my-3">
-                                    <label className="form-label">Experience (optional)</label>
-                                    <input type="number" className="form-control shadow-sm" placeholder="Experience" value={formData.experience} onChange={(e) => setFormData({ ...formData, experience: e.target.value })}/>
-                                </div>
-
-                                <div className="d-flex justify-content-between my-3">
-                                    <div>
-                                        <div className="fs-6">Share Profile</div>
-                                        <div className="fs-6 text-secondary"> (Jobfinder will share your profile to Companies)</div>
-                                    </div>
-                                    <div className="form-check form-switch">
-                                        <input className="form-check-input" type="checkbox" checked={formData.shareprofile} onChange={(e) => setFormData({ ...formData, shareprofile: e.target.value })} />
-                                    </div>
+                                    <input type="number" className="form-control shadow-sm" placeholder="Contact" value={formData.contact} onChange={(e) => setFormData({ ...formData, contact: e.target.value })} />
                                 </div>
                                 <div className="my-3">
                                     <div className="d-flex justify-content-between align-items-center w-75">
                                         <label className="form-label fs-5">Skills</label>
                                         <div className="fs-6 text-secondary mr-3">example: JAVA,PYTHON</div>
                                     </div>
-                                    <input type="text" className="form-control shadow-sm" placeholder="Skills" value={formData.skills} onChange={(e) => setFormData({ ...formData, skills: e.target.value.split(',') })}/>
+                                    <input type="text" className="form-control shadow-sm" placeholder="Skills" value={formData.skills} onChange={(e) => setFormData({ ...formData, skills: e.target.value.split(',') })} />
                                 </div>
+                            </div>
+                            <div className="col-12 col-lg-6">
+                                <div className="my-3">
+                                    <label className="form-label">Occupation</label>
+                                    <input list="Occupation" className="form-control shadow-sm" placeholder="Occupation" value={formData.occupation} onChange={(e) => setFormData({ ...formData, occupation: e.target.value })} />
+                                    <datalist id="Occupation">
+                                        <option>Student</option>
+                                        <option>Employee</option>
+                                        <option>Freelancer</option>
+                                    </datalist>
+                                </div>
+                                <div className="my-3">
+                                    <label className="form-label">Collage/ Company Name</label>
+                                    <input className="form-control shadow-sm" placeholder="Collage/ Company Name" value={formData.clgcompName} onChange={(e) => setFormData({ ...formData, clgcompName: e.target.value })} />
+                                </div>
+                                <div className="my-3">
+                                    <label className="form-label">Education</label>
+                                    <input className="form-control shadow-sm" placeholder="Education" value={formData.education} onChange={(e) => setFormData({ ...formData, education: e.target.value })} />
+                                </div>
+                                {formData.occupation === "Student" ?
+                                    <>
+                                        <div className="d-flex justify-content-between my-3">
+                                            <div>
+                                                <div className="fs-6">Share Profile</div>
+                                                <div className="fs-6 text-secondary"> (Jobfinder will share your profile to Companies)</div>
+                                            </div>
+                                            <div className="form-check form-switch">
+                                                <input className="form-check-input" type="checkbox" checked={formData.shareprofile} onChange={(e) => setFormData({ ...formData, shareprofile: e.target.value })} />
+                                            </div>
+                                        </div>
+                                    </> : <>
+                                        <div className="my-3">
+                                            <label className="form-label">Role (optional)</label>
+                                            <input type="text" className="form-control shadow-sm" placeholder="Role" value={formData.role} onChange={(e) => setFormData({ ...formData, role: e.target.value })} />
+                                        </div>
+                                        <div className="my-3">
+                                            <label className="form-label">Seniority (optional)</label>
+                                            <input type="text" className="form-control shadow-sm" placeholder="Role" value={formData.seniority} onChange={(e) => setFormData({ ...formData, seniority: e.target.value })} />
+                                        </div>
+                                        <div className="my-3">
+                                            <label className="form-label">Experience (optional)</label>
+                                            <input type="number" className="form-control shadow-sm" placeholder="Experience" value={formData.experience} onChange={(e) => setFormData({ ...formData, experience: e.target.value })} />
+                                        </div></>
+                                }
                                 <button className="btn btn-outline-secondary rounded shadow-sm w-100 my-2">Create Profile</button>
                             </div>
                         </div>
                     </form>
                 </div>
                 <div className="col-12 col-lg-4">
-                    <form className="form-group px-2 mt-0 mt-lg-5 mb-5 mb-lg-0" onSubmit={confirmAddress}>
+                    {formData.occupation === "Student" ?
+                        <></> :
+                        <div className="d-flex justify-content-between my-3">
+                            <div>
+                                <div className="fs-6">Share Profile</div>
+                                <div className="fs-6 text-secondary"> (Jobfinder will share your profile to Companies)</div>
+                            </div>
+                            <div className="form-check form-switch">
+                                <input className="form-check-input" type="checkbox" checked={formData.shareprofile} onChange={(e) => setFormData({ ...formData, shareprofile: e.target.value })} />
+                            </div>
+                        </div>
+                    }
+                    <form className="form-group px-2 mt-0 mt-lg-5 mb-5 mb-lg-0">
                         <div className="card p-md-2 shadow-sm">
                             <div style={{ height: "60vh" }}>
                                 <MapGL
@@ -221,7 +234,6 @@ function Createprofile() {
                                     />
                                 </MapGL>
                             </div>
-                            <button className="btn shadow-sm w-50 my-2 mx-auto btn-color-primary">Confirm Address</button>
                         </div>
                     </form>
                 </div>

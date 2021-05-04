@@ -1,8 +1,17 @@
-import React from "react";
-import Badge from "./Badge"
+import React,{useEffect} from "react";
+import {useDispatch,useSelector} from "react-redux"
+import Badge from "./Badge";
+import {getCompanyapplication} from "../actions/application";
 
 const Jobcard = ({ job }) => {
     console.log(job)
+    const dispatch = useDispatch();
+    const id = job._id
+    useEffect(() => {
+        dispatch(getCompanyapplication(id))
+ // eslint-disable-next-line
+    }, [dispatch]);
+    const application =useSelector((state) => state.applications); 
     return (
         <div className="card p-2 shadow mt-4">
             <div className="row gy-2 gy-md-3 align-items-center">
@@ -24,7 +33,7 @@ const Jobcard = ({ job }) => {
                 </div>
                 <div className="col-12 col-lg-3">
                     <div className="color-bg rounded w-100">
-                        <div className="fs-5 fw-bold p-1 rounded text-center">{job.application.length}</div>
+                    {!application.lenght? <div className="fs-5 fw-bold p-1 rounded text-center">0</div>:<div className="fs-5 fw-bold p-1 rounded text-center">{application.lenght}</div>}
                         <div className="text-xs text-secondary text-center">Applied</div>
                     </div>
                 </div>

@@ -115,8 +115,8 @@ function Create() {
                                 <div className="col-12 col-lg-5">
                                     {previewSrc ? (
                                         isPreviewAvailable ? (
-                                            <div className="image-preview">
-                                                <img className="preview-image" src={previewSrc} alt="Preview" width="200" height="100" />
+                                            <div className="image-preview text-center">
+                                                <img className="preview-image" src={previewSrc} alt="Preview" width="200" height="200" />
                                             </div>
                                         ) : (
                                             <div className="preview-message">

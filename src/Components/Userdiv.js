@@ -5,8 +5,6 @@ import Usercard from "./Usercard";
 
 function Userdiv({ setCurrentId }) {
     const users = useSelector((state) => state.users);
-    console.log(users)
-
     return (
         !users.length ? <div className="spinner-border text-warning" role="status">
             <span className="visually-hidden">Loading...</span>

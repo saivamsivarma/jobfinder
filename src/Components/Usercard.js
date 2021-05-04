@@ -6,7 +6,7 @@ const Usercard= ({user}) =>{
         <div className="card p-2 shadow">
             <div className="row gy-2 gy-md-3 align-items-center">
                 <div className="col-12 col-lg-3 text-center">
-                    <img src={"http://localhost:5000/" + user.image} alt="" height="80" className="shadow rounded-pill" />
+                    <img src={"https://jobfinder-project.herokuapp.com/" + user.image} alt="" height="80" className="shadow rounded-pill" />
                 </div>
                 <div className="col-12 col-lg-7">
                     <div className="fw-bold fs-5">{user.name}</div>
@@ -24,7 +24,7 @@ const Usercard= ({user}) =>{
                     <div className="row align-items-center gy-2">
                         <div className="col-6 col-lg-3">
                             <div className="secondary-bg p-1 rounded">
-                                <div className="text-white fw-bold">{user.exp} Years</div>
+                                <div className="text-white fw-bold">{user.experience} Years</div>
                                 <div className="text-white">Relevant exp.</div>
                             </div>
                         </div>
