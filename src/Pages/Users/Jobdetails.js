@@ -8,12 +8,12 @@ import Badge from "../../Components/Badge";
 function Jobdetails() {
     let { id } = useParams()
     const job = useSelector((state) => state.jobdetails);
+    let value = job.jobType
     const dispatch = useDispatch();
     useEffect(() => {
-        let value = job.jobType
         dispatch(getdetails(id));
         dispatch(relatedJobs(value));
-    }, [id, dispatch]);
+    }, [id, dispatch,value]);
     // eslint-disable-next-line
     const pageVariants = {
         initial: {

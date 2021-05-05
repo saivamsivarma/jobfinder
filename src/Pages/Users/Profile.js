@@ -4,6 +4,8 @@ import { motion } from "framer-motion";
 import Badge from "../../Components/Badge";
 function Profile() {
     const data = JSON.parse(localStorage.getItem('userData'))
+    const skills = data.skills
+    var newSkills = skills.split(',')
     const pageVariants = {
         initial: {
             opacity: 0,
@@ -69,12 +71,35 @@ function Profile() {
                                     </div>
                                     <div className="col-12">
                                         <div className="fs-6 text-secondary">Skills</div>
-                                        {data.skills.map((skill) =>
-                                        <div key>
-                                            <Badge value={skill} color="primary"/>
+                                        <div className="row">
+                                            {newSkills.map((skill) =>
+                                                <div key className="col-6 col-lg-2">
+                                                    <Badge value={skill} color="primary" />
+                                                </div>
+                                            )}
                                         </div>
-                                        )}
                                     </div>
+                                    {data.occupation === "Student" ?
+                                        <></> :
+                                        <div className="col-12 col-lg-4">
+                                            <div className="fs-6 text-secondary">Role</div>
+                                            <div className="fs-5 secondary-text">{data.role}</div>
+                                        </div>
+                                    }
+                                    {data.occupation === "Student" ?
+                                        <></> :
+                                        <div className="col-6 col-lg-4">
+                                            <div className="fs-6 text-secondary">Experience</div>
+                                            <div className="fs-5 secondary-text">{data.experience} years</div>
+                                        </div>
+                                    }
+                                    {data.occupation === "Student" ?
+                                        <></> :
+                                        <div className="col-6 col-lg-4">
+                                            <div className="fs-6 text-secondary">Level</div>
+                                            <div className="fs-5 secondary-text">{data.seniority} years</div>
+                                        </div>
+                                    }
                                 </div>
                             </div>
                         </div>

@@ -23,7 +23,7 @@ const MAPBOX_TOKEN = "pk.eyJ1IjoidmFtc2l2YXJtYSIsImEiOiJja255cGl5aTgwMDh1MndsOGN
 function Createprofile() {
     const user = JSON.parse(localStorage.getItem('profile'))
 
-    const [formData, setFormData] = useState({ _id: user.result._id, name: user.result.name, email: user.result.email, age: '', contact: '', occupation: '', clgcompName: '', education: '', role: '', seniority: '', experience: '', shareprofile: '', skills: '', geo_location: '', image: '' });
+    const [formData, setFormData] = useState({ _id: user.result._id, name: user.result.name, email: user.result.email, age: '', contact: '', occupation: '', clgcompName: '', education: '', role: '', seniority: '', experience: '', shareprofile: '', skills: [], geo_location: '', image: '' });
     const history = useHistory();
     const dispatch = useDispatch();
 
@@ -149,7 +149,7 @@ function Createprofile() {
                                         <label className="form-label fs-5">Skills</label>
                                         <div className="fs-6 text-secondary mr-3">example: JAVA,PYTHON</div>
                                     </div>
-                                    <input type="text" className="form-control shadow-sm" placeholder="Skills" value={formData.skills} onChange={(e) => setFormData({ ...formData, skills: e.target.value.split(',') })} />
+                                    <input type="text" className="form-control shadow-sm" placeholder="Skills" value={formData.skills} onChange={(e) => setFormData({ ...formData, skills: e.target.value})} />
                                 </div>
                             </div>
                             <div className="col-12 col-lg-6">

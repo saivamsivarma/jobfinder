@@ -5,7 +5,7 @@ export const userprofile = (profile,history) => async(dispatch)=>{
   try{
     const {data} = await api.userprofile(profile);
     dispatch({type:CREATE_PROFILE_USER,payload:data})
-    history.push('/dashboard')
+    history.push('/user-page/')
   }catch({response}){
     console.log(response)
   }
