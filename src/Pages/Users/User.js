@@ -11,6 +11,7 @@ import Dashboard from "./Dashboard";
 import Profile from "./Profile";
 import Findjobs from "./Findjobs";
 import Jobdetails from "./Jobdetails";
+import ModalDiv from "../../Components/ModalDiv";
 
 const routes = [
     {
@@ -38,11 +39,13 @@ function User() {
     const dashBoard = useRef(null);
     const jobs = useRef(null);
     const profile = useRef(null);
-    const vlogout = useRef(null)
+    const vlogout = useRef(null);
+    const modalButton = useRef(null);
     const history = useHistory();
 
     const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')))
     const [isNavCollapsed, setIsNavCollapsed] = useState(true);
+    const [newJobs, setNewJobs] = useState([])
 
     const handleNavCollapse = () => setIsNavCollapsed(!isNavCollapsed);
     const dispatch = useDispatch()
@@ -63,6 +66,11 @@ function User() {
                     case ' jobs':
                         alanBtnInstance.playText('Opening Your Profile')
                         jobs.current.click()
+                        return;
+                    case 'newJob':
+                        modalButton.current.click()
+                        console.log(data)
+                        setNewJobs([data])
                         return;
                     case 'logout':
                         alanBtnInstance.playText('Have a nice day')
@@ -158,21 +166,35 @@ function User() {
                             </nav>
                         </div>
                         <div className="col-12 col-lg-9 col-xl-10">
-                                <AnimatePresence>
-                                    <Switch>
-                                        {routes.map((route, index) => (
-                                            <Route
-                                                key={index}
-                                                path={route.path}
-                                                exact={route.exact}
-                                                children={<route.main />}
-                                            />
-                                        ))}
-                                    </Switch>
-                                </AnimatePresence>
+                            <AnimatePresence>
+                                <Switch>
+                                    {routes.map((route, index) => (
+                                        <Route
+                                            key={index}
+                                            path={route.path}
+                                            exact={route.exact}
+                                            children={<route.main />}
+                                        />
+                                    ))}
+                                </Switch>
+                            </AnimatePresence>
                         </div>
                     </div>
                 </Router>}
+            <button type="button" className="btn btn-primary d-none" data-bs-toggle="modal" data-bs-target="#exampleModal " ref={modalButton}>Launch demo modal</button>
+            <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div className="modal-dialog modal-fullscreen">
+                    <div className="modal-content color-bg">
+                        <div className="modal-header">
+                            <h5 className="modal-title primary-text" id="exampleModalLabel">Alan Results</h5>
+                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div className="modal-body">
+                            {!newJobs ? <></> : <><ModalDiv datas={newJobs} /></>}
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 }
