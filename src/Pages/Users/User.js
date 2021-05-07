@@ -43,35 +43,76 @@ function User() {
     const modalButton = useRef(null);
     const history = useHistory();
 
+    let modal = false
+    const [modalHeader,setModalHeader] = useState('Welcome to JobFinder')
     const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')))
     const [isNavCollapsed, setIsNavCollapsed] = useState(true);
     const [newJobs, setNewJobs] = useState([])
+    const [activeJob, setActiveJob] = useState(-1)
 
     const handleNavCollapse = () => setIsNavCollapsed(!isNavCollapsed);
     const dispatch = useDispatch()
     useEffect(() => {
         let alanBtnInstance = alanBtn({
             key: alanKey,
-            onCommand: ({ command, data }) => {
+            onConnectionStatus: function (status) {
+                if (status === 'authorized') {
+                    //alanBtnInstance.activate();
+                    //alanBtnInstance.playText(`Hey, ${user?.result.name} this is Alan your personal voice assistant`);
+                    //modalButton.current.click() // eslint-disable-next-line
+                    modal = true // eslint-disable-next-line
+                }
+            },
+            onCommand: ({ command, data,header }) => {
                 console.log(command)
                 switch (command) {
                     case 'dashboard':
-                        alanBtnInstance.playText('Opening dashboard')
-                        dashBoard.current.click()
+                        alanBtnInstance.playText(('Opening dashboard || Here is your dashboard'))
+                        if (modal === true) {
+                            modal = false
+                            modalButton.current.click()
+                            dashBoard.current.click()
+                        }
+                        else {
+                            dashBoard.current.click()
+                        }
                         return;
                     case 'profile':
                         alanBtnInstance.playText('Opening Your Profile')
-                        profile.current.click()
+                        if (modal === true) {
+                            modal = false
+                            modalButton.current.click()
+                            profile.current.click()
+                        }
+                        else {
+                            profile.current.click()
+                        }
                         return;
                     case ' jobs':
                         alanBtnInstance.playText('Opening Your Profile')
-                        jobs.current.click()
+                        if (modal === true) {
+                            modal = false
+                            modalButton.current.click()
+                            jobs.current.click()
+                        }
+                        else {
+                            jobs.current.click()
+                        }
                         return;
                     case 'newJob':
-                        modalButton.current.click()
-                        console.log(data)
-                        setNewJobs([data])
+                        setModalHeader(header)
+                        if(modal === false){
+                            modal = true
+                            modalButton.current.click()
+                            setNewJobs([data])
+                        }
+                        else{
+                            setNewJobs([data])
+                        }
                         return;
+                    case 'highlight':
+                        setActiveJob((prevActiveJob) => prevActiveJob + 1)
+                        return
                     case 'logout':
                         alanBtnInstance.playText('Have a nice day')
                         vlogout.current.click()
@@ -80,32 +121,10 @@ function User() {
                     default:
                         return
                 }
-                /*if (command === 'newJob') {
-                    //alanBtnInstance.playText(`hi ${profile.name} welcome to jobfinder`)
-                    console.log(data)
-                    history.push('/user-page/findjobs')
-                }
-                else if (command === 'locationJob') {
-                    //alanBtnInstance.playText(`hi ${profile.name} welcome to jobfinder`)
-                    console.log(data)
-                    history.push('/user-page/findjobs')
-                }
-                else if (command === 'logout') {
-                    alanBtnInstance.deactivate();
-                    dispatch({ type: 'LOGOUT' })
-                    history.push('/auth')
-                    setUser(null)
-                }
-            },
-            onConnectionStatus: function(status) {
-                if (status === 'authorized') {
-                    alanBtnInstance.activate();
-                    alanBtnInstance.playText('Hey, this is Alan your personal voice assistant');
-                }*/
             },
         })
         // eslint-disable-next-line
-    }, []);
+    }, [modal]);
     const logout = () => {
         dispatch({ type: 'LOGOUT' })
         history.push('/auth')
@@ -136,31 +155,31 @@ function User() {
                                 <div className={`${isNavCollapsed ? 'collapse' : ''} navbar-collapse justify-content-center`} id="navbarNavDropdown">
                                     <div className="my-5 mb-3 d-block d-lg-none">
                                         <div className="nav__link my-3 py-2 px-3 rounded" role="button" >
-                                            <NavLink to="/user-page/" className="nav__name fs-5 text-decoration-none" ref={dashBoard} onClick={handleNavCollapse}>Dashboard</NavLink>
+                                            <NavLink to="/user-page/" className="nav__name fs-5 text-decoration-none" onClick={handleNavCollapse}>Dashboard</NavLink>
                                         </div>
                                         <div className="nav__link my-3 py-2 px-3 rounded" role="button" >
-                                            <NavLink to="/user-page/findjobs" className="nav__name fs-5 text-decoration-none " ref={jobs} onClick={handleNavCollapse}>Jobs</NavLink>
+                                            <NavLink to="/user-page/findjobs" className="nav__name fs-5 text-decoration-none" onClick={handleNavCollapse}>Jobs</NavLink>
                                         </div>
                                         <div className="nav__link my-3 py-2 px-3 rounded" role="button" >
-                                            <NavLink to="/user-page/profile" className="nav__name fs-5 text-decoration-none" ref={profile} onClick={handleNavCollapse}>Profile</NavLink>
+                                            <NavLink to="/user-page/profile" className="nav__name fs-5 text-decoration-none" onClick={handleNavCollapse}>Profile</NavLink>
                                         </div>
                                         <div className="nav__link my-3 py-2 px-3 rounded" role="button" >
-                                            <NavLink to="/auth" className="nav__name fs-5 text-decoration-none" ref={vlogout} onClick={logout}>Logout</NavLink>
+                                            <NavLink to="/auth" className="nav__name fs-5 text-decoration-none" onClick={logout}>Logout</NavLink>
                                         </div>
                                     </div>
                                 </div>
                                 <div className="my-5 mb-3 d-none d-lg-block">
                                     <div className="nav__link my-3 py-2 px-3 rounded" role="button">
-                                        <NavLink to="/user-page/" className="nav__name fs-5 text-decoration-none">Dashboard</NavLink>
+                                        <NavLink to="/user-page/" className="nav__name fs-5 text-decoration-none" ref={dashBoard}>Dashboard</NavLink>
                                     </div>
                                     <div className="nav__link my-3 py-2 px-3 rounded" role="button">
-                                        <NavLink to="/user-page/findjobs" className="nav__name fs-5 text-decoration-none ">Jobs</NavLink>
+                                        <NavLink to="/user-page/findjobs" className="nav__name fs-5 text-decoration-none" ref={jobs} >Jobs</NavLink>
                                     </div>
                                     <div className="nav__link my-3 py-2 px-3 rounded" role="button">
-                                        <NavLink to="/user-page/profile" className="nav__name fs-5 text-decoration-none">Profile</NavLink>
+                                        <NavLink to="/user-page/profile" className="nav__name fs-5 text-decoration-none" ref={profile}>Profile</NavLink>
                                     </div>
                                     <div className="nav__link my-3 py-2 px-3 rounded" role="button">
-                                        <div className="nav__name fs-5 text-decoration-none" onClick={logout}>Logout</div>
+                                        <div className="nav__name fs-5 text-decoration-none" ref={vlogout} onClick={logout}>Logout</div>
                                     </div>
                                 </div>
                             </nav>
@@ -186,11 +205,23 @@ function User() {
                 <div className="modal-dialog modal-fullscreen">
                     <div className="modal-content color-bg">
                         <div className="modal-header">
-                            <h5 className="modal-title primary-text" id="exampleModalLabel">Alan Results</h5>
+                            <h5 className="modal-title primary-text" id="exampleModalLabel">{modalHeader}</h5>
                             <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div className="modal-body">
-                            {!newJobs ? <></> : <><ModalDiv datas={newJobs} /></>}
+                            {!newJobs.length ? <div className="row justify-content-center align-items-center" style={{ height: "50vh" }}>
+                                <div className="col-12 col-lg-4 text-center">
+                                    <img src={logo} alt="" className="modal-image"/>
+                                </div>
+                                <div className="col-12">
+                                    <div className="row">
+                                        <div className="col-12 col-md-4">
+                                            <div className="card"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                                : <><ModalDiv datas={newJobs} activeJob={activeJob} /></>}
                         </div>
                     </div>
                 </div>

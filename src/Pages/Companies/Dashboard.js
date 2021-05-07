@@ -23,7 +23,7 @@ function Dashboard() {
     const jobs = useSelector((state) => state.jobs);
     return (
             <div className="row">
-                <div className="col-12 col-lg-10 my-2">
+                <div className="col-12 col-xl-10 my-2">
                     <div className="row mt-2 gy-3">
                         <div className="col-12">
                             <div className="fs-4"> Welcome! {user?.result.name}</div>

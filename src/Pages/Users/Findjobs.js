@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import "../../App.css";
-import {  motion } from "framer-motion";
-import ReactMapGL, { Marker,Popup } from "react-map-gl";
+import { motion } from "framer-motion";
+import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import { useSelector, useDispatch } from "react-redux";
 import Card from "../../Components/Card";
 import Pin from "../../Assets/pin.svg"
 import { getjobs } from "../../actions/jobs"
+import { ToastContainer} from 'react-toastify';
 
 const MAPBOX_TOKEN = "pk.eyJ1IjoidmFtc2l2YXJtYSIsImEiOiJja255cGl5aTgwMDh1MndsOGNlMW5tcjB1In0.meQKsOns2H20hKPnUQoYrQ";
 
@@ -16,7 +17,7 @@ function Findjobs() {
         longitude: 78.9629,
         zoom: 4
     });
-    const [selectedJob,setSelectedJob] = useState(null);
+    const [selectedJob, setSelectedJob] = useState(null);
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(getjobs());
@@ -43,6 +44,7 @@ function Findjobs() {
     };
     return (
         <>
+        <ToastContainer position="top-center"autoClose={5000} hideProgressBar newestOnTop closeOnClickrtl pauseOnFocusLoss draggable pauseOnHover/>
             {!jobs.length ? <div className="row justify-content-center align-items-center height-max">
                 <div className="col-2">
                     <div className="spinner-border text-warning" role="status">
@@ -75,20 +77,20 @@ function Findjobs() {
                                         key={job._id}
                                         latitude={parseFloat(job.geo_location[0])}
                                         longitude={parseFloat(job.geo_location[1])}>
-                                        <button className="btn marker-btn" onClick={(e) =>{e.preventDefault();setSelectedJob(job)}}>
+                                        <button className="btn marker-btn" onClick={(e) => { e.preventDefault(); setSelectedJob(job) }}>
                                             <img src={Pin} alt="Skate Park Icon" />
                                         </button>
                                     </Marker>
                                 ))}
-                                {selectedJob ?(
-                                <Popup latitude={parseFloat(selectedJob.geo_location[0])} longitude={parseFloat(selectedJob.geo_location[1])}
-                                onClose= {()=>{setSelectedJob(null)}}>
-                                    <div>
-                                        <div className="fs-6 secondary-text">{selectedJob.postName}</div>
-                                        <div className="primary-text">{selectedJob.company_id.companyname}</div>
-                                    </div>
-                                </Popup>
-                                ):null}
+                                {selectedJob ? (
+                                    <Popup latitude={parseFloat(selectedJob.geo_location[0])} longitude={parseFloat(selectedJob.geo_location[1])}
+                                        onClose={() => { setSelectedJob(null) }}>
+                                        <div>
+                                            <div className="fs-6 secondary-text">{selectedJob.postName}</div>
+                                                <div className="primary-text">{selectedJob.company_id.companyname}</div>
+                                        </div>
+                                    </Popup>
+                                ) : null}
                             </ReactMapGL>
                         </div>
                     </div>

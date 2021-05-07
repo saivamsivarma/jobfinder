@@ -35,7 +35,7 @@ function Job() {
                         </div> :
                         <>
                             {jobs.map((job) => (
-                                <div className="col-12 col-md-6" key={job._id} item={"true"}>
+                                <div className="col-12 col-xl-6" key={job._id} item={"true"}>
                                     <Jobcard job={job} />
                                 </div>
                             ))}

@@ -26,4 +26,5 @@ export const companyjobs = (id) =>API.get(`/job/get_company_jobs/${id}`);
 export const getprofile = (id) => API.get(`/company/profile/${id}`);
 export const relatedjobs = (value) => API.get(`/job/find_job/${value}`)
 
-export const getappications = (id) => API.get(`/application/get_company_application/${id}`)
+export const getapplications = (id) => API.get(`/application/get_company_application/${id}`)
+export const postapplication = (formData) => API.post('/application/post_application',formData)

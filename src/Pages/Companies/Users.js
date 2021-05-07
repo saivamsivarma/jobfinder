@@ -14,8 +14,8 @@ function User() {
     }, [currentId, dispatch]);
 
     return (
-            <div className="row">
-                <div className="col-12 col-lg-9 col-xl-10">
+            <div className="row height-max">
+                <div className="col-12">
                     <div className="row my-2">
                         <div className="col-12">
                         <Userdiv setCurrentId={setCurrentId} />

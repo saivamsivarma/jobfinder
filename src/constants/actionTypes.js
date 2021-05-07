@@ -12,5 +12,6 @@ export const DATA = 'DATA'
 export const GET_JOBS = 'GET_JOBS'
 export const GET_JOB_DETAILS = 'GET_JOB_DETAILS';
 export const APPLICATION ='APPLICATIONS';
-export const RELATED_JOBS = 'RELATED_JOBS'
+export const RELATED_JOBS = 'RELATED_JOBS';
+export const POST_APPLICATIONS = "POST_APPLICATIONS"
 export default AUTH

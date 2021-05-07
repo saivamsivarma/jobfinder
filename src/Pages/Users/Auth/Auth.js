@@ -50,14 +50,14 @@ function Auth() {
             <div className="row">
                 <div className="col-7 d-none d-lg-block  color-bg height-max">
                     <div className="row mt-lg-2 mt-xl-5 ">
-                        <div className="col-12 col-xl-6 ">
+                        <div className="col-12 col-xl-6">
                             <motion.div className="front-img" initial="initial" animate="in" exit="out" variants={pageVariants} transition={imageTransition}>
                                 <img src={LoginM} alt="" className="shadow rounded img" />
                                 <div className="fw-bold fs-4">Search</div>
                             </motion.div>
                         </div>
-                        <div className="col-12 col-xl-6">
-                            <motion.div className="front-img mt-5" initial="initial" animate="in" exit="out" variants={pageVariants} transition={imageTransition}>
+                        <div className="col-12 col-lg-7 offset-lg-5 col-xl-6  offset-xl-0">
+                            <motion.div className="front-img mt-xl-5" initial="initial" animate="in" exit="out" variants={pageVariants} transition={imageTransition}>
                                 <div className="fw-bold fs-4">Apply</div>
                                 <img src={LoginF} alt="" className="shadow rounded img" />
                             </motion.div>

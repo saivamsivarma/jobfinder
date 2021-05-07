@@ -2,6 +2,7 @@ import React from "react";
 import "../../App.css";
 import { motion } from "framer-motion";
 import Badge from "../../Components/Badge";
+import { ToastContainer} from 'react-toastify';
 function Profile() {
     const data = JSON.parse(localStorage.getItem('userData'))
     const skills = data.skills
@@ -28,6 +29,7 @@ function Profile() {
     };
     return (
         <motion.div className="row" initial="initial" animate="in" exit="out" variants={pageVariants} transition={pageTransition}>
+            <ToastContainer position="top-center"autoClose={5000} hideProgressBar newestOnTop closeOnClickrtl pauseOnFocusLoss draggable pauseOnHover/>
             <div className="col-12 col-lg-9 col-xl-8 color-bg height-max">
                 <div className="row">
                     <div className="scroll-div-profile" >
@@ -73,7 +75,7 @@ function Profile() {
                                         <div className="fs-6 text-secondary">Skills</div>
                                         <div className="row">
                                             {newSkills.map((skill) =>
-                                                <div key className="col-6 col-lg-2">
+                                                <div key className="col-4 col-md-2">
                                                     <Badge value={skill} color="primary" />
                                                 </div>
                                             )}

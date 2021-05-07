@@ -11,7 +11,7 @@ function Userdiv({ setCurrentId }) {
         </div> : (
             <div className="row my-2">
                 {users.map((user) => (
-                    <div className="col-12 col-lg-6" key={user._id} item={"true"}>
+                    <div className="col-12 col-xl-6" key={user._id} item={"true"}>
                         <Usercard user={user} setCurrentId={setCurrentId} />
                     </div>
                 ))}

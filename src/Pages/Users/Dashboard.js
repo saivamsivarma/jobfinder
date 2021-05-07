@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import "../../App.css";
 import {  motion } from "framer-motion";
 import { useDispatch,useSelector} from 'react-redux';
+import { ToastContainer} from 'react-toastify';
 
 import Job from "../../Assets/job.svg";
 import Semi from "../../Assets/semi.svg"
@@ -43,6 +44,7 @@ function Dashboard() {
     };
     return (
             <motion.div className="row align-items-start"  initial="initial" animate="in" exit="out" variants={pageVariants} transition={pageTransition}>
+                <ToastContainer position="top-center"autoClose={5000} hideProgressBar newestOnTop closeOnClickrtl pauseOnFocusLoss draggable pauseOnHover/>
                 <div className="col-12 col-lg-9 col-xl-10 height-max">
                     <div className="row mt-2 gy-3">
                         <div className="col-6"><div className="fs-4"> Welcome! {user?.result.name}</div></div>

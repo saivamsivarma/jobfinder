@@ -7,5 +7,6 @@ import users from "./user";
 import userdata from "./userdata";
 import applications from "./application";
 import jobdetails from "./jobDetails";
+import relatedjobs from "./relatedjobs"
 
-export const reducers = combineReducers({ auth,profiles,jobs,users,userdata,applications,jobdetails });
+export const reducers = combineReducers({ auth,profiles,jobs,users,userdata,applications,jobdetails,relatedjobs });

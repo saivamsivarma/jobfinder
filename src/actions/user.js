@@ -7,7 +7,7 @@ export const userprofile = (profile,history) => async(dispatch)=>{
     dispatch({type:CREATE_PROFILE_USER,payload:data})
     history.push('/user-page/')
   }catch({response}){
-    console.log(response)
+    toast.error(response.data.message)
   }
 }
 
@@ -26,6 +26,6 @@ export const getusers = () => async (dispatch) => {
       const {data} = await api.getuserdata(id);
       dispatch({type:DATA,data})
     }catch({response}){
-      console.log(response)
+      toast.error(response.data.message)
     }
   }

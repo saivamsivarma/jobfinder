@@ -1,6 +1,6 @@
 import {CREATE_JOB,COMPANY_JOBS,GET_JOBS,GET_JOB_DETAILS, RELATED_JOBS} from "../constants/actionTypes";
 import * as api from "../Api";
-
+import { toast } from 'react-toastify';
 export const postjob = (jobData,history) =>async(dispatch) =>{
     try{
         const {data} = await api.postjob(jobData)
@@ -8,7 +8,7 @@ export const postjob = (jobData,history) =>async(dispatch) =>{
         dispatch({type:CREATE_JOB,payload:data});
         history.push('/company/jobs');
     }catch({response}){
-        console.log(response.data)
+        toast.error(response.data.message)
     }
 }
 
@@ -18,7 +18,7 @@ export const companyjob = (id) => async(dispatch) =>{
         dispatch({ type:COMPANY_JOBS , payload: data });
         console.log(data)
     }catch({response}){
-        console.log(response.data)
+        toast.error(response.data.message)
     }
 }
 
@@ -27,8 +27,8 @@ export const getjobdetails = (id) => async(dispatch) =>{
         const {data} = await api.getjobdetails(id);
         console.log(data)
         dispatch({type:GET_JOB_DETAILS,payload:data})
-    }catch(error){
-        console.log(error)
+    }catch({response}){
+        toast.error(response.data.message)
     }
 }
 
@@ -45,9 +45,8 @@ export const getjobs = () => async (dispatch) => {
   export const relatedJobs = (value) =>async(dispatch) =>{
     try{
         const {data} = await api.relatedjobs(value)
-        console.log(data)
         dispatch({type:RELATED_JOBS,payload:data});
-    }catch(error){
-        console.log(error)
+    }catch({response}){
+        toast.error(response.data.message)
     }
 }

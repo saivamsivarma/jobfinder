@@ -1,5 +1,6 @@
 import { CREATE_PROFILE, GET_PROFILE } from "../constants/actionTypes";
 import * as api from "../Api";
+import { toast } from 'react-toastify';
 
 export const companyprofile = (profiles, history) => async (dispatch) => {
     try {
@@ -7,7 +8,7 @@ export const companyprofile = (profiles, history) => async (dispatch) => {
         dispatch({ type: CREATE_PROFILE, payload: data });
         history.push('/company')
     } catch ({response}) {
-        console.log(response.data.message)
+        toast.error(response.data.message)
     }
 }
 
@@ -16,8 +17,8 @@ export const getprofile = (id) => async (dispatch) => {
         const data = await api.getprofile(id)
         dispatch({ type: GET_PROFILE, data });
         console.log(data)
-    } catch (error) {
-        console.log(error)
+    } catch ({response}) {
+        toast.error(response.data.message)
     }
 }
 

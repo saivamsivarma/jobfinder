@@ -16,14 +16,14 @@ const Jobtable = ({ job }) => {
             <thead>
                 <tr>
                     <th scope="col">Job Role</th>
-                    <th scope="col">Location</th>
+                    <th scope="col text-center">Applications</th>
                     <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td className="text-capitalize">{job.postName}</td>
-                    <td className="text-capitalize text-center">{application.length}</td>
+                    <td className="text-capitalize">{application.length}</td>
                     <td className="secondary-text fw-bold">View</td>
                 </tr>
             </tbody>

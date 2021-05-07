@@ -1,48 +1,59 @@
 import React from "react";
+import Badge from "./Badge";
 
-const Usercard= ({user}) =>{
-
+const Usercard = ({ user }) => {
+    console.log(user)
+    const skills = user.skills
+    var newSkills = skills.split(',')
     return (
-        <div className="card p-2 shadow">
+        <div className="card p-2 shadow mt-2">
             <div className="row gy-2 gy-md-3 align-items-center">
-                <div className="col-12 col-lg-3 text-center">
-                    <img src={"https://jobfinder-project.herokuapp.com/" + user.image} alt="" height="80" className="shadow rounded-pill" />
+                <div className="col-3 text-center">
+                    <img src={"https://jobfinder-project.herokuapp.com/" + user.image} alt="" height="80" width="80" className="shadow rounded-pill" />
                 </div>
-                <div className="col-12 col-lg-7">
+                <div className="col-9 col-md-7">
                     <div className="fw-bold fs-5">{user.name}</div>
                     <div className="d-flex justify-content-between align-items-center">
-                        <div className="fs-6">{user.role}</div>
-                        <div className="secondary-text">{user.location}</div>
+                        {user.occupation === 'Student' ? <div className="fs-6">{user.occupation}</div> : <div className="fs-6">{user.role}</div>}
                         <div className="secondary-text">{user.age} years</div>
                     </div>
                 </div>
-                <div className="col-lg-2 text-center">
-                    <div className="btn btn-color-primary">view</div>
-                    <div className="fw-bold">10</div>
-                </div>
                 <div className="col-12">
                     <div className="row align-items-center gy-2">
-                        <div className="col-6 col-lg-3">
+                        <div className="col-6 col-md-4">
+                            {user.occupation === 'Student' ?
+                                <div className="secondary-bg p-1 rounded">
+                                    <div className="text-white fw-bold">{user.contact}</div>
+                                    <div className="text-white">Contact</div>
+                                </div> : <div className="secondary-bg p-1 rounded">
+                                    <div className="text-white fw-bold">{user.experience} Years</div>
+                                    <div className="text-white">Relevant exp.</div>
+                                </div>}
+                        </div>
+                        <div className="col-6 col-md-4">
                             <div className="secondary-bg p-1 rounded">
-                                <div className="text-white fw-bold">{user.experience} Years</div>
-                                <div className="text-white">Relevant exp.</div>
+                                <div className="text-white fw-bold">{user.education}</div>
+                                <div className="text-white">Education</div>
                             </div>
                         </div>
-                        <div className="col-6 col-lg-3">
-                            <div className="secondary-bg p-1 rounded">
-                                <div className="text-white fw-bold">{user.seniority}</div>
-                                <div className="text-white">Seniority</div>
-                            </div>
-                        </div>
-                        <div className="col-12 col-lg-6">
+                        <div className="col-12 col-md-4">
                             <div className="color-bg p-1 rounded">
-                                <div className="fw-bold">{user.education}</div>
-                                <div className="">Education</div>
+                                <div className="fw-bold">{user.clgcompName}</div>
+                                {user.occupation === 'Student' ? <div className="fs-6">University Name</div> : <div className="fs-6">Company Name</div>}
                             </div>
                         </div>
                         <div className="col-12">
-                        <button className="btn btn-color-primary">View</button>
+                            <div className="color-bg p-1 rounded">
+                                <div className="fw-bold">{user.email}</div>
+                                <div className="fs-6">Email</div>
+                            </div>
                         </div>
+                        <div className="fw-bold">Skill(s)</div>
+                        {newSkills.map((skill) =>
+                            <div key className="col-4 col-md-2">
+                                <Badge value={skill} color="primary" />
+                            </div>
+                        )}
                     </div>
                 </div>
             </div>

@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 function Card({job}) {
-    console.log(job)
     return (
         <div className="card p-4 shadow">
             <div className="row gy-2 gy-md-2">
@@ -31,7 +30,7 @@ function Card({job}) {
                 <div className="col-12">
                     <div className="d-flex justify-content-between">
                         <div className="num-result px-2 rounded-pill"></div>
-                        <Link to={"/user-page/job/"+job._id} className="btn px-3">View Details</Link>
+                        <Link to={"/user-page/job/"+job._id} className="btn btn-color-primary px-3">View Details</Link>
                     </div>
                 </div>
             </div>

@@ -12,6 +12,7 @@ import Jobs from "./Jobs";
 import Users from "./Users";
 import Createjob from "./Createjob";
 import { companyjob } from '../../actions/jobs';
+
 const routes = [
     {
         path: "/company/",
@@ -29,7 +30,7 @@ const routes = [
     {
         path: "/company/create_job",
         main: () => <Createjob />
-    },
+    }
 ];
 
 const alanKey = '367ca1dfd43f62d0fa72275a218f28952e956eca572e1d8b807a3e2338fdd0dc/stage'
@@ -114,31 +115,31 @@ function Company() {
                                 <div className={`${isNavCollapsed ? 'collapse' : ''} navbar-collapse justify-content-center`} id="navbarNavDropdown">
                                     <div className="my-5 mb-3 d-block d-lg-none">
                                         <div className="nav__link my-3 py-2 px-3 rounded" role="button" >
-                                            <NavLink to="/company/" className="nav__name link fs-5 text-decoration-none" ref={dashBoard} onClick={handleNavCollapse}>Dashboard</NavLink>
+                                            <NavLink to="/company/" className="nav__name link link fs-5 text-decoration-none" ref={dashBoard} onClick={handleNavCollapse}>Dashboard</NavLink>
                                         </div>
                                         <div className="nav__link my-3 py-2 px-3 rounded" role="button" >
-                                            <NavLink to="/company/jobs" className="nav__name link fs-5 text-decoration-none " ref={jobs} onClick={handleNavCollapse}>Jobs</NavLink>
+                                            <NavLink to="/company/jobs" className="nav__name link link fs-5 text-decoration-none " ref={jobs} onClick={handleNavCollapse}>Jobs</NavLink>
                                         </div>
                                         <div className="nav__link my-3 py-2 px-3 rounded" role="button" >
-                                            <NavLink to="/company/users" className="nav__name link fs-5 text-decoration-none" ref={profile} onClick={handleNavCollapse}>Profile</NavLink>
+                                            <NavLink to="/company/users" className="nav__name link link fs-5 text-decoration-none" ref={profile} onClick={handleNavCollapse}>User</NavLink>
                                         </div>
                                         <div className="nav__link my-3 py-2 px-3 rounded" role="button" >
-                                            <NavLink to="/auth" className="nav__name fs-5 link text-decoration-none" ref={vlogout} onClick={logout}>Logout</NavLink>
+                                            <div className="nav__name link fs-5 link text-decoration-none" ref={vlogout} onClick={logout}>Logout</div>
                                         </div>
                                     </div>
                                 </div>
                                 <div className="my-5 mb-3 d-none d-lg-block">
                                     <div className="nav__link my-3 py-2 px-3 rounded" role="button">
-                                        <NavLink to="/company/" className="nav__name fs-5 text-decoration-none">Dashboard</NavLink>
+                                        <NavLink to="/company/" className="nav__name link fs-5 text-decoration-none">Dashboard</NavLink>
                                     </div>
                                     <div className="nav__link my-3 py-2 px-3 rounded" role="button">
-                                        <NavLink to="/company/jobs" className="nav__name fs-5 text-decoration-none ">Jobs</NavLink>
+                                        <NavLink to="/company/jobs" className="nav__name link fs-5 text-decoration-none ">Jobs</NavLink>
                                     </div>
                                     <div className="nav__link my-3 py-2 px-3 rounded" role="button">
-                                        <NavLink to="/company/users" className="nav__name fs-5 text-decoration-none">Users</NavLink>
+                                        <NavLink to="/company/users" className="nav__name link fs-5 text-decoration-none">Users</NavLink>
                                     </div>
                                     <div className="nav__link my-3 py-2 px-3 rounded" role="button">
-                                        <div className="nav__name fs-5 text-decoration-none" onClick={logout}>Logout</div>
+                                        <div className="nav__name link fs-5 text-decoration-none" onClick={logout}>Logout</div>
                                     </div>
                                 </div>
                             </nav>

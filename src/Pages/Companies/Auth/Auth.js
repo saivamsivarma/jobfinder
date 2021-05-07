@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import "../../../App.css";
-
+import { Link } from "react-router-dom";
 import logo from "../../../Assets/logo.svg"
 import Login from "./Login";
 import Signup from "./Signup";
+
 
 function Auth() {
     const [component, setComponent] = useState("Login")
@@ -24,7 +25,14 @@ function Auth() {
         <div className="container-fluid">
             <div className="row align-items-center">
                 <div className="col-12 col-lg-5 p-2 bg-white height-max rounded shadow">
-                    {component === "Login" ? <div className="px-lg-5 my-3 fs-2 fw-bold secondary-text">Log in to your account</div>:<div className="px-lg-5 my-3 fs-2 fw-bold secondary-text">Create your account</div>}
+                    <div className="d-flex justify-content-between px-0 mb-5">
+                        <img src={logo} alt="" height="40" />
+                        <div className="d-flex">
+                            <Link to="/" className="link p-2 btn" role="button">Home</Link>
+                            <Link to="/auth" className="link p-2 btn" role="button">User Login</Link>
+                        </div>
+                    </div>
+                    {component === "Login" ? <div className="px-lg-5 my-3 fs-2 fw-bold secondary-text">Log in to your account</div> : <div className="px-lg-5 my-3 fs-2 fw-bold secondary-text">Create your account</div>}
                     {component === "Login" ?
                         <div className="px-xl-2">
                             <Login />
