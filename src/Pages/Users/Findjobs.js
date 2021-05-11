@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import Card from "../../Components/Card";
 import Pin from "../../Assets/pin.svg"
 import { getjobs } from "../../actions/jobs"
-import { ToastContainer} from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 
 const MAPBOX_TOKEN = "pk.eyJ1IjoidmFtc2l2YXJtYSIsImEiOiJja255cGl5aTgwMDh1MndsOGNlMW5tcjB1In0.meQKsOns2H20hKPnUQoYrQ";
 
@@ -44,11 +44,11 @@ function Findjobs() {
     };
     return (
         <>
-        <ToastContainer position="top-center"autoClose={5000} hideProgressBar newestOnTop closeOnClickrtl pauseOnFocusLoss draggable pauseOnHover/>
+            <ToastContainer position="top-center" autoClose={5000} hideProgressBar newestOnTop closeOnClickrtl pauseOnFocusLoss draggable pauseOnHover />
             {!jobs.length ? <div className="row justify-content-center align-items-center height-max">
                 <div className="col-2">
-                    <div className="spinner-border text-warning" role="status">
-                        <span className="visually-hidden">Loading...</span>
+                    <div class="spinner-grow text-warning" role="status">
+                        <span class="visually-hidden">Loading...</span>
                     </div>
                 </div>
             </div> :
@@ -87,7 +87,7 @@ function Findjobs() {
                                         onClose={() => { setSelectedJob(null) }}>
                                         <div>
                                             <div className="fs-6 secondary-text">{selectedJob.postName}</div>
-                                                <div className="primary-text">{selectedJob.company_id.companyname}</div>
+                                            <div className="primary-text">{selectedJob.company_id.companyname}</div>
                                         </div>
                                     </Popup>
                                 ) : null}

@@ -1,1 +1,27 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="80" height="18" viewBox="0 0 80 18"><defs><style>.a{fill:#fff;stroke:#ffab00;}.a,.b{stroke-width:2px;}.b,.e{fill:none;}.b{stroke:#04283e;}.c{fill:#04283e;font-size:14px;font-family:Righteous-Regular, Righteous;}.d{stroke:none;}</style></defs><g transform="translate(-723 -238)"><g transform="translate(1 2)"><g class="a" transform="translate(722 237)"><circle class="d" cx="6" cy="6" r="6"/><circle class="e" cx="6" cy="6" r="5"/></g><g class="b" transform="translate(728 243)"><rect class="d" width="10" height="10"/><rect class="e" x="1" y="1" width="8" height="8"/></g></g><text class="c" transform="translate(740 252)"><tspan x="0" y="0">JobFinder</tspan></text></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="80" height="18" viewBox="0 0 80 18">
+  <defs>
+    <rect id="rect-1" width="80" height="18" x="0" y="0"/>
+    <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="userSpaceOnUse">
+      <rect width="80" height="18" x="0" y="0" fill="black"/>
+      <use fill="white" xlink:href="#rect-1"/>
+    </mask>
+  </defs>
+  <g>
+    <use fill="none" xlink:href="#rect-1"/>
+    <g mask="url(#mask-2)">
+      <g>
+        <g>
+          <ellipse cx="6" cy="7" fill="none" rx="6" ry="6"/>
+          <ellipse cx="6" cy="7" fill-opacity="0" stroke="rgb(255,171,0)" stroke-dasharray="0 0 0 0" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="2" rx="5" ry="5"/>
+        </g>
+        <g>
+          <rect width="10" height="10" x="6" y="7" fill="none" rx="0" ry="0"/>
+          <rect width="8" height="8" x="7" y="8" fill-opacity="0" stroke="rgb(4,40,62)" stroke-dasharray="0 0 0 0" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="2" rx="0" ry="0"/>
+        </g>
+      </g>
+      <text font-size="0" style="white-space:pre">
+        <tspan x="17" y="14" fill="rgb(4,40,62)" font-family="Righteous" font-size="14" font-weight="400" style="white-space:pre;text-transform:none">JobFinder</tspan>
+      </text>
+    </g>
+  </g>
+</svg>

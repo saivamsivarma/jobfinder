@@ -2,8 +2,8 @@ import React from "react";
 
 function Badges(props) {
     return (
-        <div className="ml-2">
-            {props.color === "primary" ? <div className="badge primary-bg secondary-text rounded-pill">{props.value}</div>:<div className="badge secondary-bg primary-text rounded-pill">{props.value}</div>}
+        <div className="my-2">
+            {props.color === "primary" ? <div className="badge primary-bg secondary-text shadow-sm rounded-pill text-capitalize">{props.value}</div>:<div className="badge secondary-bg text-white rounded-pill text-capitalize">{props.value}</div>}
         </div>
     );
   }

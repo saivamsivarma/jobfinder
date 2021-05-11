@@ -8,6 +8,7 @@ export  const signin = (formData,history) => async(dispatch) =>{
 
         dispatch({type:AUTH,data});
         history.push('/user-page');
+        toast.success('Login Success')
     } catch({response}){
         toast.error(response.data.message)
     }
@@ -29,6 +30,7 @@ export const googlelogin= (authData,history) => async(dispatch) =>{
         const {data} = await api.googlelogin(authData)
         dispatch({type:AUTH,data})
         history.push('/user-page');
+        toast.success('Login Success')
     }catch({response}){
         toast.error(response.data.message)
     }
@@ -50,6 +52,7 @@ export const signincompany = (formData,history) => async(dispatch)=>{
         const {data} = await api.signincompany(formData)
         dispatch({type:AUTH,data});
         history.push('/company');
+        toast.success('Login Success')
     }catch({response}){
         toast.error(response.data.message)
     }

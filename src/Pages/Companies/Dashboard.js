@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
 import "../../App.css";
+import { NavLink} from 'react-router-dom'
 import { useDispatch,useSelector } from 'react-redux';
 import Jobtable from "../../Components/Jobtable";
-
+import { ToastContainer } from 'react-toastify';
 import { companyjob } from '../../actions/jobs';
 import { getusers } from '../../actions/user';
 
@@ -23,6 +24,7 @@ function Dashboard() {
     const jobs = useSelector((state) => state.jobs);
     return (
             <div className="row">
+                <ToastContainer position="bottom-center" autoClose={5000} hideProgressBar newestOnTop closeOnClickrtl pauseOnFocusLoss draggable pauseOnHover />
                 <div className="col-12 col-xl-10 my-2">
                     <div className="row mt-2 gy-3">
                         <div className="col-12">
@@ -36,13 +38,13 @@ function Dashboard() {
                                             <div className="fs-1 fw-bold text-white">Get Matched</div>
                                             <div className="fs-6 fw-bold text-white">with Developer best suited to your Company</div>
                                             <div className="d-flex justify-content-evenly my-3">
-                                                <button className="btn btn-color-outline-primary">Create a Job</button>
-                                                <button className="btn btn-color-primary">View Applications</button>
+                                                <NavLink to="/company/jobs" className="btn btn-outline-warning">Create a Job</NavLink>
+                                                <NavLink to="/company/users" className="btn btn-warning text-white">View Users</NavLink>
                                             </div>
                                         </div>
                                     </div>
                                     <div className="col-12 col-md-6 text-center p-3 mb-3 mb-md-0 order-first order-md-last">
-                                        <img src={Job} alt="" className="img-fluid" />
+                                        <img src={Job} alt="" className="img-fluid" height="100" width="240"/>
                                     </div>
                                 </div>
                             </div>
@@ -53,7 +55,7 @@ function Dashboard() {
                                     <div className="px-4 py-3">
                                         <div className="fs-5 fw-bold">Profile Available:</div>
                                         <div className="fs-1 fw-bold mt-1 ml-2 ">{users.length}</div>
-                                        <button className="btn btn-color-primary px-3">View All</button>
+                                        <NavLink to="/company/users" className="btn btn-warning text-white px-3">View All</NavLink>
                                     </div>
                                     <img src={Semi} alt="" className="align-self-end" width="70" height="75" />
                                 </div>

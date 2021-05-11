@@ -1,12 +1,9 @@
 import React from "react";
-import Badge from "./Badge";
 
 const Usercard = ({ user }) => {
     console.log(user)
-    const skills = user.skills
-    var newSkills = skills.split(',')
     return (
-        <div className="card p-2 shadow mt-2">
+        <div className="card p-2 shadow mt-2" role="button">
             <div className="row gy-2 gy-md-3 align-items-center">
                 <div className="col-3 text-center">
                     <img src={"https://jobfinder-project.herokuapp.com/" + user.image} alt="" height="80" width="80" className="shadow rounded-pill" />
@@ -42,18 +39,6 @@ const Usercard = ({ user }) => {
                                 {user.occupation === 'Student' ? <div className="fs-6">University Name</div> : <div className="fs-6">Company Name</div>}
                             </div>
                         </div>
-                        <div className="col-12">
-                            <div className="color-bg p-1 rounded">
-                                <div className="fw-bold">{user.email}</div>
-                                <div className="fs-6">Email</div>
-                            </div>
-                        </div>
-                        <div className="fw-bold">Skill(s)</div>
-                        {newSkills.map((skill) =>
-                            <div key className="col-4 col-md-2">
-                                <Badge value={skill} color="primary" />
-                            </div>
-                        )}
                     </div>
                 </div>
             </div>

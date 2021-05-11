@@ -12,7 +12,6 @@ function Suggestiondiv({ value,id }) {
     const jobs = useSelector((state) => state.relatedjobs);
     const newdata = jobs.filter(job => job._id !== id)
     const newJobs = newdata
-    console.log(newJobs)
     return (
         <div className="row align-tems-center justify-content-center suggestion-div overflow-auto my-3" id="custom_scroll_bar">
             {!newJobs.location===value?

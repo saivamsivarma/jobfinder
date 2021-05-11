@@ -6,6 +6,7 @@ export const userprofile = (profile,history) => async(dispatch)=>{
     const {data} = await api.userprofile(profile);
     dispatch({type:CREATE_PROFILE_USER,payload:data})
     history.push('/user-page/')
+    toast.success('Profile Created')
   }catch({response}){
     toast.error(response.data.message)
   }

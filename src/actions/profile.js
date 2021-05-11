@@ -7,6 +7,7 @@ export const companyprofile = (profiles, history) => async (dispatch) => {
         const data = await api.companyprofile(profiles)
         dispatch({ type: CREATE_PROFILE, payload: data });
         history.push('/company')
+        toast.success('Profile created')
     } catch ({response}) {
         toast.error(response.data.message)
     }

@@ -2,6 +2,7 @@ import React,{useEffect} from "react";
 import {useDispatch,useSelector} from "react-redux"
 import Badge from "./Badge";
 import {getCompanyapplication} from "../actions/application";
+import {Link} from "react-router-dom";
 
 const Jobcard = ({ job }) => {
     console.log(job)
@@ -11,9 +12,9 @@ const Jobcard = ({ job }) => {
         dispatch(getCompanyapplication(id))
  // eslint-disable-next-line
     }, [dispatch]);
-    const application =useSelector((state) => state.applications); 
+    const application =useSelector((state) => state.applications);
     return (
-        <div className="card p-2 shadow mt-4">
+        <div className="card p-2 shadow-sm mt-4">
             <div className="row gy-2 gy-md-3 align-items-center">
                 <div className="col-3 col-lg-2">
                     {job.active === "on" ? <Badge color="primary" value="Active" /> : <Badge color="primary" value="InActive" />}
@@ -21,7 +22,6 @@ const Jobcard = ({ job }) => {
                 <div className="col-3 col-lg-2">
                     <Badge color="primary" value="Open Application" />
                 </div>
-                <div className="col-2 offset-4 offset-lg-6 text-center">10</div>
                 <div className="col-12 col-lg-9">
                     <div className="fs-5 fw-bold">{job.postName}</div>
                     <div className="d-flex justify-content-between">
@@ -33,11 +33,13 @@ const Jobcard = ({ job }) => {
                 </div>
                 <div className="col-12 col-lg-3">
                     <div className="color-bg rounded w-100">
-                    {!application.lenght? <div className="fs-5 fw-bold p-1 rounded text-center">0</div>:<div className="fs-5 fw-bold p-1 rounded text-center">{application.lenght}</div>}
+                    {!application.length? <div className="fs-5 fw-bold p-1 rounded text-center">0</div>:<div className="fs-5 fw-bold p-1 rounded text-center">{application.length}</div>}
                         <div className="text-xs text-secondary text-center">Applied</div>
                     </div>
                 </div>
-                <div className="col-3 offset-9 col-lg-2 offset-lg-10">View</div>
+                <div className="col-3 offset-9 col-lg-2 offset-lg-10">
+                    <Link to={"/company/job/"+job._id} className="btn">View</Link>
+                </div>
             </div>
         </div>
     );

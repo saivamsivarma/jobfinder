@@ -7,6 +7,7 @@ export const postjob = (jobData,history) =>async(dispatch) =>{
         console.log(data)
         dispatch({type:CREATE_JOB,payload:data});
         history.push('/company/jobs');
+        toast.success('Job created')
     }catch({response}){
         toast.error(response.data.message)
     }

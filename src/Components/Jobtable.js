@@ -24,7 +24,7 @@ const Jobtable = ({ job }) => {
                 <tr>
                     <td className="text-capitalize">{job.postName}</td>
                     <td className="text-capitalize">{application.length}</td>
-                    <td className="secondary-text fw-bold">View</td>
+                    <td className="text-warning fw-bold">View</td>
                 </tr>
             </tbody>
         </table>

@@ -75,7 +75,7 @@
 }
 
 .suggestion-div{
-    max-height: 60vh;
+    height: 76vh;
 }
 .scroll-div2{
     max-height: 120vh;
@@ -126,11 +126,12 @@
     height: 20px;
   }
 
-  .link {
+  .link{
     display: inline-block;
     color: #04283E;
     text-decoration: none;
 }
+
 
 
 .link::after {
@@ -146,7 +147,7 @@
 
 .link:hover::after {
     width: 100%;
-    color:#04283E !important;
+    color:#04283E;
 }
 
 .text-xs{
@@ -156,6 +157,25 @@
 
 .text-justify{
     text-align: justify;
+}
+
+.scroll-X{
+    width:70vw;
+    overflow-x: auto;
+}
+
+.scroll-Xmodal{
+    width:90vw;
+    overflow-x: auto;
+}
+
+.scroll-application{
+    width:25vw;
+    overflow-x: auto;
+}
+
+.h-25{
+    height: 5vh !important;
 }
 
 @media only screen and (max-width: 1025px)
@@ -187,4 +207,31 @@
     .modal-image{
         height: 60px !important;
     }
+    .scroll-X{
+        width:90vw;
+        overflow-x: auto;
+    }
+}
+
+
+@media only screen and (max-width: 500px)
+{
+    .scroll-X{
+        width:90vw;
+        overflow-x: auto;
+    }
+    .scroll-application{
+        width:90vw;
+        overflow-x: auto;
+    }
+    
+.custom-btn{
+    width:100%;
+}
+
+.scroll-Xmodal{
+    width:90vw;
+    overflow-x: auto;
+}
+
 }

@@ -28,3 +28,7 @@ export const relatedjobs = (value) => API.get(`/job/find_job/${value}`)
 
 export const getapplications = (id) => API.get(`/application/get_company_application/${id}`)
 export const postapplication = (formData) => API.post('/application/post_application',formData)
+export const userapplications = (id) => API.get(`/application/get_user_application/${id}`)
+
+export const referUser = (referData) => API.post('/reference/',referData);
+export const getrefer = (formData) =>API.get('/reference/',formData)

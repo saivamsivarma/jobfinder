@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 function SuggestionJobs({job}) {
     return (
-        <div className="card p-2">
+        <div className="card shadow-sm p-2 my-1">
             <div className="row gy-2 gy-md-2">
                 <div className="col-12">
                     <div className="d-flex align-item-center justify-content-between">

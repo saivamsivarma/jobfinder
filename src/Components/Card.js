@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 function Card({job}) {
     return (
-        <div className="card p-4 shadow">
+        <div className="card p-4 shadow-sm my-2">
             <div className="row gy-2 gy-md-2">
                 <div className="col-12">
                     <div className="d-flex align-item-center justify-content-between">

@@ -1,6 +1,6 @@
 import React, { useState, useRef, useCallback } from "react";
 import "../../App.css";
-
+import { ToastContainer } from 'react-toastify';
 import "mapbox-gl/dist/mapbox-gl.css";
 import "react-map-gl-geocoder/dist/mapbox-gl-geocoder.css";
 
@@ -59,6 +59,7 @@ function Createjob() {
 
     return (
             <div className="row my-5">
+                <ToastContainer position="bottom-center" autoClose={5000} hideProgressBar newestOnTop closeOnClickrtl pauseOnFocusLoss draggable pauseOnHover />
                 <div className="col-6">
                     <div className="fs-4 fw-bold mt-2">Job Posting Advert</div>
                 </div>

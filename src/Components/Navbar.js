@@ -29,8 +29,8 @@ function Navbar(props) {
                             <div className="fw-bold">About</div>
                             <div className="fw-bold">FAQ</div>
                             <div className="fw-bold">Contact</div>
-                            <Link to="/auth" className="btn btn-outline-secondary px-4 fw-bold">Log in</Link>
-                            <Link to="/companiesauth" className="btn btn-color-secondary px-4 fw-bold">Are you an employer?</Link>
+                            <Link to="/auth" className="btn btn-outline-secondary px-4 fw-bold rounded-pill">Log in</Link>
+                            <Link to="/companiesauth" className="btn btn-color-secondary px-4 fw-bold rounded-pill">Are you an employer?</Link>
                         </div>
                     </div>
                     : <div></div>}

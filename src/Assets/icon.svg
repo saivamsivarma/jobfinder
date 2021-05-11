@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
+  <defs>
+    <ellipse id="ellipse-2" cx="6" cy="6" rx="5" ry="5"/>
+    <rect id="rect-4" width="8" height="8" x="7" y="7" rx="0" ry="0"/>
+  </defs>
+  <g>
+    <g>
+      <ellipse cx="6" cy="6" fill="none" rx="6" ry="6"/>
+      <g>
+        <use fill="rgb(0,0,0)" fill-opacity="0" xlink:href="#ellipse-2"/>
+        <use fill-opacity="0" stroke="rgb(255,171,0)" stroke-dasharray="0 0 0 0" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="2" xlink:href="#ellipse-2"/>
+      </g>
+    </g>
+    <g>
+      <rect width="10" height="10" x="6" y="6" fill="none" rx="0" ry="0"/>
+      <g>
+        <use fill="rgb(0,0,0)" fill-opacity="0" xlink:href="#rect-4"/>
+        <use fill-opacity="0" stroke="rgb(4,40,62)" stroke-dasharray="0 0 0 0" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="2" xlink:href="#rect-4"/>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -1,4 +1,4 @@
-import { APPLICATION,POST_APPLICATIONS} from "../constants/actionTypes";
+import { APPLICATION,POST_APPLICATIONS,GET_APPLICATION} from "../constants/actionTypes";
 
 const ApplicationReducer = (applications=[], action)=>{
     switch (action.type){
@@ -6,6 +6,8 @@ const ApplicationReducer = (applications=[], action)=>{
             return action.payload;
         case POST_APPLICATIONS:
             return [...applications, action.payload];
+        case GET_APPLICATION:
+            return action.payload;
         default:
             return applications;
     }

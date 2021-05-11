@@ -26,7 +26,7 @@ function Signup() {
     }
     return (
         <div className="mx-auto w-100 px-lg-5">
-            <ToastContainer position="top-center"autoClose={5000} hideProgressBar newestOnTop closeOnClickrtl pauseOnFocusLoss draggable pauseOnHover/>
+            <ToastContainer position="bottom-center"autoClose={5000} hideProgressBar newestOnTop closeOnClickrtl pauseOnFocusLoss draggable pauseOnHover/>
             <form className="form-group my-4" onSubmit={handleSubmit}>
                 <Input name="name" type="text" placeholder="Full Name" label="Full Name"  properties="mt-3" handleChange={handleChange}/>
                 <Input name="email" type="email" placeholder="Email Id" label="Email Id"  properties="mt-3" handleChange={handleChange}/>

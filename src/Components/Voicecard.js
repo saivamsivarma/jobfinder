@@ -1,12 +1,21 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React,{ useState, useEffect, createRef } from "react";
 
 function Voicecard({job,i,activeJob}) {
-    console.log(i)
-    console.log(activeJob)
+    const [elRefs, setElRefs] = useState([]);
+  const scrollToRef = (ref) => window.scroll(0, ref.current.offsetTop - 50);
+
+  useEffect(() => {
+    setElRefs((refs) => Array(20).fill().map((_, j) => refs[j] || createRef()));
+  }, []);
+
+  useEffect(() => {
+    if (i === activeJob && elRefs[activeJob]) {
+      scrollToRef(elRefs[activeJob]);
+    }
+  }, [i, activeJob, elRefs]);
     return (
         <>
-        <div className={`${activeJob === i ? 'activeCard' : ''} card p-4 shadow-sm`}>
+        <div className={`${activeJob === i ? 'activeCard' : ''} card p-4 shadow-sm my-1`} ref={elRefs[i]}>
             <div className="row gy-2 gy-md-2">
                 <div className="col-12">
                     <div className="d-flex align-item-center justify-content-between">
@@ -29,12 +38,6 @@ function Voicecard({job,i,activeJob}) {
                     <div className="fw-bold secondary-text">Work</div>
                     {!job.remote? <div className="primary-text">On site</div>:
                     <div className="primary-text">Remote</div>}
-                </div>
-                <div className="col-12">
-                    <div className="d-flex justify-content-between">
-                        <div className="num-result px-2 rounded-pill">{i+1}</div>
-                        <Link to={"/user-page/job/"+job._id} className="btn px-3">View Details</Link>
-                    </div>
                 </div>
             </div>
         </div>

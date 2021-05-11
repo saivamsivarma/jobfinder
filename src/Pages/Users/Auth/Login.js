@@ -47,7 +47,7 @@ function Login() {
     
     return (
         <div className="w-100 px-lg-5">
-            <ToastContainer position="top-center"autoClose={5000} hideProgressBar newestOnTop closeOnClickrtl pauseOnFocusLoss draggable pauseOnHover/>
+            <ToastContainer position="bottom-center"autoClose={5000} hideProgressBar newestOnTop closeOnClickrtl pauseOnFocusLoss draggable pauseOnHover/>
             <form className="form-group my-4" onSubmit={handleSubmit}>
                 <Input name="email" type="email" placeholder="Email Id" label="Email Id" properties="mt-3" handleChange={handleChange} />
                 <Input name="password" type="password" placeholder="Password" label="Password" properties="mt-3" handleChange={handleChange} />

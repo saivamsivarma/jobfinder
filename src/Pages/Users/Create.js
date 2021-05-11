@@ -101,7 +101,7 @@ function Createprofile() {
 
     return (
         <div className="container-fluid">
-            <ToastContainer position="top-center"autoClose={5000} hideProgressBar newestOnTop closeOnClickrtl pauseOnFocusLoss draggable pauseOnHover/>
+            <ToastContainer position="bottom-center"autoClose={5000} hideProgressBar newestOnTop closeOnClickrtl pauseOnFocusLoss draggable pauseOnHover/>
             <div className="row">
                 <div className="col-12">
                     <div className="fs-4 fw-bold mt-2">Jobfinder Profile</div>

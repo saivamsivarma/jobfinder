@@ -1,4 +1,4 @@
-import {APPLICATION, POST_APPLICATIONS} from "../constants/actionTypes";
+import {APPLICATION, GET_APPLICATION, POST_APPLICATIONS} from "../constants/actionTypes";
 import * as api from "../Api";
 import { toast } from 'react-toastify';
 
@@ -20,5 +20,15 @@ export const postapplication = (formData) => async(dispatch) =>{
         dispatch({type:POST_APPLICATIONS,payload:data})
     }catch({response}){
         toast.error(response.data.message)
+    }
+}
+
+export const userapplications = (id) => async(dispatch) =>{
+    try{
+        const {data} = await api.userapplications(id)
+        console.log(data)
+        dispatch({type:GET_APPLICATION,payload:data})
+    }catch({response}){
+        console.log(response.data.message)
     }
 }
