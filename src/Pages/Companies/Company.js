@@ -78,7 +78,6 @@ function Company() {
                 }
             },
             onCommand: ({ command, data, header }) => {
-                console.log(command)
                 switch (command) {
                     case 'dashboard':
                         if (modal === true) {// eslint-disable-next-line
@@ -158,7 +157,6 @@ function Company() {
     }
     const modalClose = () => {
         modal = true
-        console.log(modal)
     }
     const Intents = ["Suggest me any Users", "Open Users", "Open My jobs", "User with java as skill"]
     return (

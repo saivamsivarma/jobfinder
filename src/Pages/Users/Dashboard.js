@@ -22,7 +22,6 @@ function Dashboard() {
     }, [id, dispatch]);
 
     const refers = useSelector((state) => state.refers);
-    console.log(refers)
     const jobs = useSelector((state) => state.jobs);
     const pageVariants = {
         initial: {

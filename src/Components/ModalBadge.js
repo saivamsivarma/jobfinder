@@ -7,8 +7,8 @@ function ModalBadges({ skills }) {
         <>
         {!skills?
         <></>:
-        <>{newSkills.map((skill) =>
-            <div key className="col-4 col-md-2">
+        <>{newSkills.map((skill,key) =>
+            <div key={key} className="col-4 col-md-2">
                 <div className="badge secondary-bg primary-text rounded-pill">{skill}</div>
             </div>
         )}</>

@@ -1,7 +1,6 @@
 import React from "react";
 
 const Usercard = ({ user }) => {
-    console.log(user)
     return (
         <div className="card p-2 shadow mt-2" role="button">
             <div className="row gy-2 gy-md-3 align-items-center">

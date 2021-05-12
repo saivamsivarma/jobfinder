@@ -57,7 +57,6 @@ function Create() {
             profiles.append('size', size);
             profiles.append('description', description)
             profiles.append('logo', file)
-            console.log(profiles)
             dispatch(companyprofile(profiles,history));
         } catch (error) {
             console.log(error.message)

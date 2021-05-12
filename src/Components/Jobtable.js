@@ -3,7 +3,6 @@ import {useDispatch,useSelector} from "react-redux"
 import {getCompanyapplication} from "../actions/application";
 
 const Jobtable = ({ job }) => {
-    console.log(job)
     const dispatch = useDispatch();
     const id = job._id
     useEffect(() => {

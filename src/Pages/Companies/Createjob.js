@@ -53,7 +53,6 @@ function Createjob() {
         e.preventDefault();
         const geo = [viewport.latitude, viewport.longitude]
         setJobData({ ...jobData, geo_location: geo })
-        console.log(jobData)
         dispatch(postjob(jobData,history));
     };
 

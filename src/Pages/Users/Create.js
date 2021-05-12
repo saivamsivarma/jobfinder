@@ -94,7 +94,6 @@ function Createprofile() {
             profiles.append('skills', skills)
             profiles.append('geo_location', [viewport.latitude, viewport.longitude])
             profiles.append('image', file)
-            console.log(profiles)
             dispatch(userprofile(profiles,history));
         } catch (err) {
             console.log(err)

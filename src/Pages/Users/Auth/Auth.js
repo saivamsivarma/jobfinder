@@ -16,11 +16,9 @@ function Auth() {
         e.preventDefault();
         if (component === "Login") {
             setComponent("Signup");
-            console.log(component);
         }
         else {
             setComponent("Login");
-            console.log(component)
         }
     }
     const pageVariants = {

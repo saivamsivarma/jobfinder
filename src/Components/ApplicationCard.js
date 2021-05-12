@@ -1,7 +1,6 @@
 import React from "react";
 
 function ApplicationCard({ application }) {
-    console.log(application)
     return (
         <div className="card p-4 shadow-sm my-2 mx-1">
             {!application._id ? <div className="row justify-content-between align-items-center">

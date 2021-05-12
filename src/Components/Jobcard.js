@@ -5,7 +5,6 @@ import {getCompanyapplication} from "../actions/application";
 import {Link} from "react-router-dom";
 
 const Jobcard = ({ job }) => {
-    console.log(job)
     const dispatch = useDispatch();
     const id = job._id
     useEffect(() => {

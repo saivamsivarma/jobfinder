@@ -3,32 +3,19 @@ import Voicecard from "./Voicecard"
 import Badge from "./Badge";
 import { useDispatch } from 'react-redux';
 import { postapplication } from "../actions/application";
-import { ToastContainer } from 'react-toastify';
-import { referUser } from "../actions/refer";
 
 function ModalDiv({ datas, activeJob }) {
     const [selectedJob, setselectedJob] = useState(null)
     const user = JSON.parse(localStorage.getItem('profile'))
     const user_id = user?.result._id
     const formData = { job: selectedJob?._id, user: user_id, company: selectedJob?.company_id?.companyname }
-    const [referData, setReferData] = useState({ job_id: selectedJob?._id, user_id: user_id, email: '', company: selectedJob?.company_id?.companyname })
-    const [referButton, setReferButton] = useState(false);
-    const changeTo = () => setReferButton(!referButton);
     const dispatch = useDispatch();
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(formData);
         dispatch(postapplication(formData))
-    }
-    const handleReferSubmit = (e) => {
-        e.preventDefault();
-        console.log(referData);
-        dispatch(referUser(referData))
-        setReferData({ email: '' })
     }
     return (
         <>
-            <ToastContainer position="top-center" autoClose={5000} hideProgressBar newestOnTop closeOnClickrtl pauseOnFocusLoss draggable pauseOnHover />
             {!datas ? <></> :
                 <div className="row scroll-div overflow-auto" id="custom_scroll_bar">
                     <div className="col-12 col-md-5">
@@ -76,57 +63,21 @@ function ModalDiv({ datas, activeJob }) {
                                 <div className="col-12">
                                     <div className="fw-bold secondary-text">Skill(s) required</div>
                                     <div className="row" >
-                                        {selectedJob.keyword.map((word) =>
-                                            <div key={word} className="col-4 col-md-3">
+                                        {selectedJob.keyword.map((word, key) =>
+                                            <div key={key} className="col-4 col-md-3">
                                                 <Badge value={word} />
                                             </div>
                                         )}
                                     </div>
                                 </div>
-                                {referButton === false ? <>
-                                    <div className="col-6 text-center">
-                                        <button className="btn btn-outline-secondary w-100 mt-3" onClick={changeTo}>Refer A Person</button>
-                                    </div>
-                                    <div className="col-6 text-center">
-                                        <button className="btn btn-color-primary w-100 mt-3" onClick={handleSubmit}>Apply now</button>
-                                    </div>
-                                </> : <div className="col-12">
-
-                                    <form className="form-group px-3">
-                                        <div className="fs-5 fw-bold secondary-text">Refer by Email id</div>
-                                        <input type="text" className="form-control shadow-sm" placeholder="Email ID" value={referData.email} onChange={(e) => setReferData({ ...referData, email: e.target.value })} />
-                                    </form>
-                                    <div className="d-flex justify-content-between px-3 mt-2">
-                                    <button className="btn btn-outline-secondary shadow-sm px-4" onClick={changeTo}>Cancel</button>
-                                        <button className="btn btn-color-primary shadow-sm px-4" onClick={handleReferSubmit}>Submit</button>
-                                    </div>
+                                <div className="col-12 text-center">
+                                    <button className="btn btn-color-primary w-100 mt-3" onClick={handleSubmit}>Apply now</button>
                                 </div>
-                                }
                             </div>
                         </div>}
                     </div>
                 </div>
             }
-            <div className="modal fade" id="exampleModal3" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div className="modal-dialog">
-                    <div className="modal-content">
-                        <div className="modal-header">
-                            <h5 className="modal-title" id="exampleModalLabel">Referring to {selectedJob?.postName} in {selectedJob?.company_id?.companyname}</h5>
-                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div className="modal-body">
-                            <form className="form-group">
-                                <div className="fs-5 fw-bold secondary-text">Refer by Email id</div>
-                                <input type="text" className="form-control shadow-sm" placeholder="Email ID" value={referData.email} onChange={(e) => setReferData({ ...referData, email: e.target.value })} />
-                            </form>
-                        </div>
-                        <div className="d-flex justify-content-between align-items-center p-2">
-                            <button type="button" className="btn btn-outline-secondary px-5 shadow-sm" data-bs-dismiss="modal">Close</button>
-                            <button type="button" className="btn btn-color-primary px-5 shadow-sm" onClick={handleReferSubmit} data-bs-dismiss="modal">Refer</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </>
     );
 }

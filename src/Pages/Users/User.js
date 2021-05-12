@@ -62,7 +62,6 @@ function User() {
 
     const handleNavCollapse = () => setIsNavCollapsed(!isNavCollapsed);
     const applications = useSelector((state) => state.applications);
-    console.log(applications)
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(getrefer(formData))
@@ -78,7 +77,6 @@ function User() {
                 }
             },
             onCommand: ({ command, data, header }) => {
-                console.log(command)
                 switch (command) {
                     case 'dashboard':
                         alanBtnInstance.playText(('Opening dashboard | Here is your dashboard'))
@@ -119,12 +117,10 @@ function User() {
                             modal = true
                             setNewJobs(data)
                             setVcommand(command);
-                            console.log(data)
                         }
                         else {
                             setNewJobs(data)
                             setVcommand(command);
-                            console.log(data)
                         }
                         setModalHeader(header)
                         return;
@@ -155,10 +151,10 @@ function User() {
         })
         // eslint-disable-next-line
     }, [modal]);
+    // eslint-disable-next-line
     const refers = useSelector((state) => state.refers);
     const Availjobs = useSelector((state) => state.jobs);
     const Userprofile = JSON.parse(localStorage.getItem('userData'))
-    console.log(refers)
     const logout = () => {
         dispatch({ type: 'LOGOUT' })
         history.push('/auth')
@@ -193,17 +189,17 @@ function User() {
 
                                 <div className={`${isNavCollapsed ? 'collapse' : ''} navbar-collapse justify-content-center`} id="navbarNavDropdown">
                                     <div className="my-5 mb-3 d-block d-lg-none">
-                                        <div className="nav__link my-3 py-2 px-3 rounded link" role="button" >
-                                            <NavLink to="/user-page/" className="nav__name fs-5 text-decoration-none" onClick={handleNavCollapse}>Dashboard</NavLink>
+                                        <div className="nav__link my-3 py-2 px-3 rounded" role="button" >
+                                            <NavLink to="/user-page/" className="nav__name fs-5 text-decoration-none link" onClick={handleNavCollapse}>Dashboard</NavLink>
                                         </div>
-                                        <div className="nav__link my-3 py-2 px-3 rounded link" role="button" >
-                                            <NavLink to="/user-page/findjobs" className="nav__name fs-5 text-decoration-none" onClick={handleNavCollapse}>Jobs</NavLink>
+                                        <div className="nav__link my-3 py-2 px-3 rounded " role="button" >
+                                            <NavLink to="/user-page/findjobs" className="nav__name fs-5 text-decoration-none link" onClick={handleNavCollapse}>Jobs</NavLink>
                                         </div>
-                                        <div className="nav__link my-3 py-2 px-3 rounded link" role="button" >
-                                            <NavLink to="/user-page/profile" className="nav__name fs-5 text-decoration-none" onClick={handleNavCollapse}>Profile</NavLink>
+                                        <div className="nav__link my-3 py-2 px-3 rounded" role="button" >
+                                            <NavLink to="/user-page/profile" className="nav__name fs-5 text-decoration-none link" onClick={handleNavCollapse}>Profile</NavLink>
                                         </div>
-                                        <div className="nav__link my-3 py-2 px-3 rounded link" role="button" >
-                                            <NavLink to="/auth" className="nav__name fs-5 text-decoration-none" onClick={logout}>Logout</NavLink>
+                                        <div className="nav__link my-3 py-2 px-3 rounded" role="button" >
+                                            <NavLink to="/auth" className="nav__name fs-5 text-decoration-none link" onClick={logout}>Logout</NavLink>
                                         </div>
                                     </div>
                                 </div>

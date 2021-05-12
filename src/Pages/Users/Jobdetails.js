@@ -31,7 +31,6 @@ function Jobdetails() {
     }
     const handleReferSubmit = (e) => {
         e.preventDefault();
-        console.log(referData);
         dispatch(referUser(referData))
         setReferData({ email: '' })
     }

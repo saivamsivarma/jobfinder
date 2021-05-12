@@ -20,7 +20,6 @@ function Login() {
     const handleSubmit = (e) => {
         e.preventDefault();
         setLoading(true);
-        console.log(formData);
         dispatch(signin(formData, history))
         setTimeout(()=>{
             setLoading(false)
@@ -35,7 +34,6 @@ function Login() {
         const result = res?.profileObj;
         const email = result.email
         const authData = { email }
-        console.log(authData)
         try {
             dispatch(googlelogin(authData, history))
         } catch (error) {

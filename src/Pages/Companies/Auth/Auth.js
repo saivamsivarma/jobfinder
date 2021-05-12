@@ -8,7 +8,6 @@ import Signup from "./Signup";
 
 function Auth() {
     const [component, setComponent] = useState("Login")
-    console.log(component)
 
     function handleClick(e) {
         e.preventDefault();

@@ -1,7 +1,6 @@
 import React from "react";
 
 function Userapplication({ application }) {
-    console.log(application)
     return (
         <div className="card p-2 shadow mt-2">
             <div className="row gy-2 gy-md-3 align-items-center">

@@ -8,7 +8,6 @@ function Suggestiondiv({ value,id }) {
     useEffect(() => {
         dispatch(relatedJobs(value));
     }, [dispatch, value]);
-    console.log(value)
     const jobs = useSelector((state) => state.relatedjobs);
     const newdata = jobs.filter(job => job._id !== id)
     const newJobs = newdata
