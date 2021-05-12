@@ -5,16 +5,18 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getjobdetails } from '../../actions/jobs';
 import { getCompanyapplication } from "../../actions/application";
 import Userapplication from "../../Components/Userapplication";
-import ModalBadge from "../../Components/ModalBadge";
+
 function Applicationdetails() {
     let { id } = useParams()
     const dispatch = useDispatch();
+    const [selectedUser, setselectedUser] = useState(null)
+    const skill = selectedUser?.skills
+    var newSkills = skill?.split(',')
     useEffect(() => {
         dispatch(getCompanyapplication(id))
         dispatch(getjobdetails(id))
         // eslint-disable-next-line
     }, [id, dispatch]);
-    const [selectedUser, setselectedUser] = useState(null)
     const applications = useSelector((state) => state.applications);
     const job = useSelector((state) => state.jobdetails)
     return (
@@ -125,7 +127,11 @@ function Applicationdetails() {
                                                         </div>}
                                                 </div>
                                                 <div className="fw-bold">Skill(s)</div>
-                                                <ModalBadge skills={selectedUser?.user_id.skills} />
+                                                <>{newSkills.map((skill) =>
+                                                        <div key className="col-4 col-md-2">
+                                                            <div className="badge secondary-bg primary-text rounded-pill">{skill}</div>
+                                                        </div>
+                                                    )}</>
                                                 <div className="col-12">
                                                     <div className="d-flex justify-content-around mt-3 mb-2">
                                                         <button className="btn btn-color-primary px-5 shadow-sm">Reject</button>

@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import { useSelector } from 'react-redux';
 
 import Usercard from "./Usercard";
-import ModalBadge from "./ModalBadge";
 
 function Userdiv({ setCurrentId }) {
     const users = useSelector((state) => state.users);
     const [selectedUser, setselectedUser] = useState(null)
+    const skill = selectedUser?.skills
+    var newSkills = skill?.split(',')
     return (
         !users.length ?
             <div className="row justify-content-center align-items-center height-max">
@@ -81,7 +82,12 @@ function Userdiv({ setCurrentId }) {
                                                             </div>}
                                                     </div>
                                                     <div className="fw-bold">Skill(s)</div>
-                                                    <ModalBadge skills={selectedUser?.skills} />
+                                                    <>{newSkills.map((skill) =>
+                                                        <div key className="col-4 col-md-2">
+                                                            <div className="badge secondary-bg primary-text rounded-pill">{skill}</div>
+                                                        </div>
+                                                    )}</>
+
                                                     <div className="col-12 mt-3">
                                                         <a href={`mailto: ${selectedUser?.email}`} className="btn w-100 btn-color-primary shadow-sm">Send Email</a>
                                                     </div>
