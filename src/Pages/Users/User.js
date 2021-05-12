@@ -73,7 +73,7 @@ function User() {
             onConnectionStatus: function (status) {
                 if (status === 'authorized') {
                     alanBtnInstance.activate();
-                    alanBtnInstance.playText(`Hello, ${user?.result.name} this is Alan your personal voice assistant.`);
+                    alanBtnInstance.playText(`(Hello, ${user?.result.name} I am Alan your personal voice assistant. I Can help you to search ,apply job, and Track your Application and profile | Hello ${user?.result.name}, how can I Help you today)`);
                     modalButton.current.click() // eslint-disable-next-line
                 }
             },
@@ -81,7 +81,7 @@ function User() {
                 console.log(command)
                 switch (command) {
                     case 'dashboard':
-                        alanBtnInstance.playText(('Opening dashboard || Here is your dashboard'))
+                        alanBtnInstance.playText(('Opening dashboard | Here is your dashboard'))
                         if (modal === true) {// eslint-disable-next-line
                             modal = false
                             modalButton.current.click()
@@ -92,7 +92,7 @@ function User() {
                         }
                         return;
                     case 'profile':
-                        alanBtnInstance.playText('Opening Your Profile')
+                        alanBtnInstance.playText(`(Opening Your Profile | Fetching your data | sure ${user?.result.name})`)
                         if (modal === true) {
                             modal = false
                             modalButton.current.click()
@@ -103,7 +103,7 @@ function User() {
                         }
                         return;
                     case ' jobs':
-                        alanBtnInstance.playText('Opening Your Profile')
+                        alanBtnInstance.playText(`(Opening Jobs | Here are the jobs available | sure ${user?.result.name})`)
                         if (modal === true) {
                             modal = false
                             modalButton.current.click()
@@ -129,7 +129,7 @@ function User() {
                         setModalHeader(header)
                         return;
                     case 'applicationData':
-                        alanBtnInstance.playText('ok. Here what I have found')
+                        alanBtnInstance.playText('(ok. Here what I have found | fetching your Application Data | Here is your application data)')
                         setModalHeader(header)
                         if (modal === false) {
                             modal = true

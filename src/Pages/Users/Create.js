@@ -26,6 +26,7 @@ function Createprofile() {
     const [formData, setFormData] = useState({ _id: user.result._id, name: user.result.name, email: user.result.email, age: '', contact: '', occupation: '', clgcompName: '', education: '', role: '', seniority: '', experience: '', shareprofile: '', skills: [], geo_location: '', image: '' });
     const history = useHistory();
     const dispatch = useDispatch();
+    const [loading, setLoading] = useState(false);
 
     const [viewport, setViewport] = useState({
         latitude: 22.199166076052652,
@@ -71,6 +72,7 @@ function Createprofile() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setLoading(true);
         try {
             const { age, contact, occupation, clgcompName, education, role, seniority, experience, shareprofile, skills } = formData
             const _id = user?.result._id;
@@ -97,6 +99,9 @@ function Createprofile() {
         } catch (err) {
             console.log(err)
         }
+        setTimeout(()=>{
+            setLoading(false)
+        },9000)
     };
 
     return (
@@ -195,7 +200,7 @@ function Createprofile() {
                                             <input type="number" className="form-control shadow-sm" placeholder="Experience" value={formData.experience} onChange={(e) => setFormData({ ...formData, experience: e.target.value })} />
                                         </div></>
                                 }
-                                <button className="btn btn-outline-secondary rounded shadow-sm w-100 my-2">Create Profile</button>
+                                {loading === false ? <button className="btn btn-outline-secondary rounded shadow-sm w-100 my-2">Create Profile</button> : <button className="btn btn-color-secondary w-100 mt-2 mb-3" type="button" disabled>Loading...</button>}
                             </div>
                         </div>
                     </form>

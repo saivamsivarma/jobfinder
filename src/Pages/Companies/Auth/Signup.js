@@ -11,12 +11,16 @@ const initialState = {name:'',email:'',password:'',confirmPassword:'',role:'empl
 
 function Signup() {
     const [formData, setFormData] = useState(initialState);
+    const [loading, setLoading] = useState(false);
     const history = useHistory();
     const dispatch = useDispatch();
     const handleSubmit = (e) =>{
+        setLoading(true);
         e.preventDefault();
         dispatch(signupcompany(formData,history));
-        console.log(formData)
+        setTimeout(()=>{
+            setLoading(false)
+        },9000)
     }
     const handleChange = (e) => {
         setFormData({...formData, [e.target.name]:e.target.value});
@@ -29,7 +33,7 @@ function Signup() {
                 <Input name="email" type="email" placeholder="Email Id" label="Email Id"   properties="mt-3" handleChange={handleChange}/>
                 <Input name="password" type="password" placeholder="Password" label="Password"   properties="mt-3" handleChange={handleChange}/>
                 <Input name="confirmPassword" type="password" placeholder="Confirm Password" label="Confirm Password"   properties="mt-3" handleChange={handleChange}/>
-                <button className="btn btn-color-secondary w-100 my-4">Sign up</button>
+                {loading === false ? <button className="btn btn-color-secondary w-100 my-4">Sign up</button> : <button className="btn btn-color-secondary w-100 my-4" type="button" disabled>Loading...</button>}
             </form>
         </div>
     );

@@ -72,8 +72,8 @@ function Company() {
             key: alanKey,
             onConnectionStatus: function (status) {
                 if (status === 'authorized') {
-                    //alanBtnInstance.activate();
-                    //alanBtnInstance.playText('Hey, this is Alan your personal voice assistant');
+                    alanBtnInstance.activate();
+                    alanBtnInstance.playText(`Hey,${user?.result.name} I am Alan your personal voice assistant. I Can help you to search user, manage your jobs`);
                     modalButton.current.click()
                 }
             },
@@ -92,24 +92,22 @@ function Company() {
                         }
                         return;
                     case 'users':
+                        alanBtnInstance.playText('(Ok. Getting data Of all the Users | Here are the User available)')
                         if (modal === true) {
                             modal = false
                             modalButton.current.click()
-                            alanBtnInstance.playText('(Ok. Getting data Of all the Users | Here are the User available)')
                             users.current.click()
                         } else {
-                            alanBtnInstance.playText('(Ok. Getting data Of all the Users | Here are the User available)')
                             users.current.click()
                         }
                         return;
                     case 'jobs':
+                        alanBtnInstance.playText('Ok. Getting the Jobs you have created')
                         if (modal === true) {// eslint-disable-next-line
                             modal = false
-                            alanBtnInstance.playText('Ok. Getting the Data of the Jobs you have created')
                             modalButton.current.click()
                             jobs.current.click()
                         } else {
-                            alanBtnInstance.playText('Ok. Getting the Data of the Jobs you have created')
                             jobs.current.click()
                         }
                         return;
@@ -125,6 +123,7 @@ function Company() {
                         setVcommand(command)
                         return
                     case 'yourJobs':
+                        alanBtnInstance.playText('Ok. Getting the Data of the Jobs you have created')
                         if (modal === false) {// eslint-disable-next-line
                             modal = true
                             modalButton.current.click()

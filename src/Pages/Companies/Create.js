@@ -11,7 +11,7 @@ import { companyprofile } from "../../actions/profile";
 function Create() {
     const user = JSON.parse(localStorage.getItem('profile'))
     const [formData, setFormData] = useState({ _id:'',contact: '', size: '', companyname: '', description: '',name:''});
-
+    const [loading, setLoading] = useState(false);
     const history = useHistory();
     const dispatch = useDispatch();
 
@@ -44,6 +44,7 @@ function Create() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        setLoading(true);
         try {
             const { companyname, contact, size, description} = formData
             const name = user?.result.name;
@@ -61,6 +62,9 @@ function Create() {
         } catch (error) {
             console.log(error.message)
         }
+        setTimeout(()=>{
+            setLoading(false)
+        },9000)
     }
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -131,7 +135,7 @@ function Create() {
                                 </div>
                                 <div className="secondary-text fs-6">Max file size: 1Mb and max resolution: 500px x 500px. File type: jpeg, jpg, png</div>
                                 <div className="col-12 text-center">
-                                    <button type="submit" className="btn btn-color-primary px-5 my-3">Create Profile</button>
+                                {loading === false ? <button type="submit" className="btn btn-color-primary px-5 my-3">Create Profile</button> : <button className="btn btn-color-secondary px-5 my-3" type="button" disabled>Loading...</button>}
                                 </div>
                             </div>
                         </form>

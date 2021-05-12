@@ -24,7 +24,7 @@ function Login() {
         dispatch(signin(formData, history))
         setTimeout(()=>{
             setLoading(false)
-        },5000)
+        },9000)
     }
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
