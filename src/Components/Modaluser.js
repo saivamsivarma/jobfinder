@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import UserVoicecard from "./UserVoicecard";
+import ModalBadge from './ModalBadge';
 
 function Modaluser({ datas, activeUser }) {
     const [selectedUser, setselectedUser] = useState(null)
-    const skill = selectedUser?.skills
-    var newSkills = skill?.split(',')
     return (
         <>
             {!datas ? <></> :
@@ -70,11 +69,7 @@ function Modaluser({ datas, activeUser }) {
                                         </div>}
                                 </div>
                                 <div className="fw-bold">Skill(s)</div>
-                                <>{newSkills.map((skill) =>
-                                                        <div key className="col-4 col-md-2">
-                                                            <div className="badge secondary-bg primary-text rounded-pill">{skill}</div>
-                                                        </div>
-                                                    )}</>
+                                <ModalBadge skills={selectedUser?.skills} />
                                 <div className="col-12 mt-3">
                                     <a href={`mailto: ${selectedUser?.email}`} className="btn w-100 btn-color-primary shadow-sm">Send Email</a>
                                 </div>
