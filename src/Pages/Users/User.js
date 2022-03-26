@@ -267,7 +267,7 @@ function User() {
                                                     <div className="fw-bold">{user?.result.name}</div>
                                                     <div className="secondary-text">{user?.result.email}</div>
                                                 </div>
-                                                <img alt={user?.result.name.charAt(0)} src={"https://jobfinder-project.herokuapp.com/" + Userprofile?.image} className="img-fluid shadow-sm rounded-pill float-end" width="60" />
+                                                <img alt={user?.result.name.charAt(0)} src={"http://localhost:4000/" + Userprofile?.image} className="img-fluid shadow-sm rounded-pill float-end" width="60" />
                                             </div>
                                         </div>
                                     </div>

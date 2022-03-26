@@ -14,6 +14,7 @@ import Users from "./Users";
 import Createjob from "./Createjob";
 import Applicationdetails from "./Applicationdetails"
 import { companyjob } from '../../actions/jobs';
+import {getprofile} from '../../actions/profile';
 import Badge from "../../Components/Badge";
 import { getusers } from '../../actions/user';
 import Jobcard from "../../Components/Jobcard";
@@ -68,6 +69,7 @@ function Company() {
     useEffect(() => {
         dispatch(getusers());
         dispatch(companyjob(id));
+        dispatch(getprofile(id))
         let alanBtnInstance = alanBtn({
             key: alanKey,
             onConnectionStatus: function (status) {

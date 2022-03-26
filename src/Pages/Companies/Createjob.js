@@ -17,8 +17,8 @@ const MAPBOX_TOKEN = "pk.eyJ1IjoidmFtc2l2YXJtYSIsImEiOiJja255cGl5aTgwMDh1MndsOGN
 function Createjob() {
     const dispatch = useDispatch();
     const history = useHistory();
-    const company = JSON.parse(localStorage.getItem('profile'))
-    const [jobData, setJobData] = useState({ company_id:company.result._id,postName: '', description: '', keyword: '', location: '', jobType: '', address: '', remote: '', fee: '', geo_location: [] });
+    const company = JSON.parse(localStorage.getItem('company'))
+    const [jobData, setJobData] = useState({ company_id:company.data._id,company_name:company.data.companyname,company_logo:company.data.logo,postName: '', description: '', keyword: '', location: '', jobType: '', address: '', remote: '', fee: '', geo_location: [] });
 
     const [viewport, setViewport] = useState({
         latitude: 22.199166076052652,
@@ -53,6 +53,7 @@ function Createjob() {
         e.preventDefault();
         const geo = [viewport.latitude, viewport.longitude]
         setJobData({ ...jobData, geo_location: geo })
+        console.log(jobData);
         dispatch(postjob(jobData,history));
     };
 

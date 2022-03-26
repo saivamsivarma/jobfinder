@@ -21,9 +21,9 @@ function Voicecard({job,i,activeJob}) {
                     <div className="d-flex align-item-center justify-content-between">
                         <div className="details">
                             <div className="fw-bold secondary-text">{job.postName}</div>
-                            <div className="fw-bold primary-text">{job.company_id.companyname}</div>
+                            <div className="fw-bold primary-text">{job.company_name}</div>
                         </div>
-                        <img src={"https://jobfinder-project.herokuapp.com/"+job.company_id.logo} alt={job.company_id.companyname} height="40" />
+                        <img src={"http://localhost:4000/"+job.company_logo} alt={job.company_name} height="40" />
                     </div>
                 </div>
                 <div className="col-6 col-md-4">

@@ -26,13 +26,7 @@ function Job() {
                             <Link to="/company/create_job" className="btn btn-color-primary float-right rounded">Create a job</Link>
                         </div>
                     </div>
-                    {!jobs.length ?
-                        <div className="col-12">
-                            <div className="spinner-border text-warning" role="status">
-                                <span className="visually-hidden">Loading...</span>
-                            </div>
-                            <div className="fs-4 fw-bold">No Jobs have been created. Click on create a job.</div>
-                        </div> :
+                    {jobs.length===0?<div className="fs-4 fw-bold">No Jobs have been created. Click on create a job.</div>:
                         <>
                             {jobs.map((job) => (
                                 <div className="col-12 col-xl-6" key={job._id} item={"true"}>
