@@ -47,7 +47,7 @@ function Profile() {
                                     <div className="fs-6 secondary-text">{data.occupation}</div>
                                 </div>
                                 <div className="col-3 text-center">
-                                    <img src={"http://localhost:4000/" + data.image} alt="user" className="img-fluid shadow-sm rounded-pill" width="80" />
+                                    <img src={"https://jobfinder-project.herokuapp.com/" + data.image} alt="user" className="img-fluid shadow-sm rounded-pill" width="80" />
                                 </div>
                                 <div className="col-12 col-md-9">
                                     <div className="fs-6 text-secondary">Email</div>

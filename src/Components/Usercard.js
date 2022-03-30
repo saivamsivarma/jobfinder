@@ -5,7 +5,7 @@ const Usercard = ({ user }) => {
         <div className="card p-2 shadow mt-2" role="button">
             <div className="row gy-2 gy-md-3 align-items-center">
                 <div className="col-3 text-center">
-                    <img src={"http://localhost:4000/" + user.image} alt="" height="80" width="80" className="shadow rounded-pill" />
+                    <img src={"https://jobfinder-project.herokuapp.com/" + user.image} alt="" height="80" width="80" className="shadow rounded-pill" />
                 </div>
                 <div className="col-9 col-md-7">
                     <div className="fw-bold fs-5">{user.name}</div>

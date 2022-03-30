@@ -33,7 +33,7 @@ function Applicationdetails() {
                         <div className="card shadow-sm p-2">
                             <div className="d-flex justify-content-between align-items-center">
                                 <div className="fs-5 primary-text">{job.postName}</div>
-                                <img src={"http://localhost:4000/" + job.company_id.logo} alt={job.company_id.companyname} height="80" />
+                                <img src={"https://jobfinder-project.herokuapp.com/" + job.company_id.logo} alt={job.company_id.companyname} height="80" />
                             </div>
                             <div className="row gy-3">
                                 <div className="col-6 col-md-4">
